@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Semparuk Kuala</title>
+
+<style>
+/* =========================
+   RESET
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f6fbf7;
+    color: #24452f;
+}
+
+/* =========================
+   WARNA & UMUM
+========================= */
+:root {
+    --hijau: #2f7d4a;
+    --hijau-muda: #dff3e5;
+    --hijau-tua: #1d5933;
+    --kuning: #ffd86b;
+    --putih: #ffffff;
+    --abu: #68756c;
+}
+
+section {
+    min-height: 100vh;
+    padding: 80px 8%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* =========================
+   HEADER
+========================= */
+header {
+    position: fixed;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1100px;
+    z-index: 1000;
+
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+
+    padding: 14px 22px;
+    border-radius: 50px;
+
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--hijau-tua);
+}
+
+.logo span {
+    color: var(--hijau);
+}
+
+nav {
+    display: flex;
+    gap: 8px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #35513d;
+    padding: 9px 15px;
+    border-radius: 25px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background: var(--hijau-muda);
+    color: var(--hijau-tua);
+}
+
+/* =========================
+   BERANDA
+========================= */
+#beranda {
+    background:
+        radial-gradient(circle at 10% 20%, #dff3e5 0, transparent 25%),
+        radial-gradient(circle at 90% 80%, #fff0b5 0, transparent 25%),
+        #f6fbf7;
+
+    display: flex;
+    align-items: center;
+}
+
+.hero {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.badge {
+    display: inline-block;
+    background: var(--kuning);
+    color: #604d00;
+    padding: 9px 17px;
+    border-radius: 30px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.hero h1 {
+    font-size: clamp(48px, 7vw, 90px);
+    line-height: 0.95;
+    color: var(--hijau-tua);
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+    color: var(--hijau);
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--abu);
+    max-width: 600px;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 14px 25px;
+    background: var(--hijau);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    background: var(--hijau-tua);
+}
+
+/* gambar hero */
+.hero-image {
+    height: 470px;
+    border-radius: 40px;
+    background:
+        linear-gradient(rgba(30,90,50,0.15), rgba(30,90,50,0.15)),
+        url("desa.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    box-shadow: 20px 20px 0 var(--kuning);
+}
+
+/* =========================
+   JUDUL SECTION
+========================= */
+.section-title {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.section-title small {
+    color: var(--hijau);
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.section-title h2 {
+    font-size: 45px;
+    color: var(--hijau-tua);
+    margin-top: 10px;
+}
+
+/* =========================
+   TENTANG
+========================= */
+#tentang {
+    background: white;
+}
+
+.about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-image {
+    height: 430px;
+    border-radius: 35px;
+    background: url("desa2.jpg") center/cover;
+}
+
+.about-text h3 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: var(--hijau-tua);
+}
+
+.about-text p {
+    line-height: 1.8;
+    color: var(--abu);
+    margin-bottom: 18px;
+}
+
+/* kartu informasi */
+.info-box {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.info {
+    background: var(--hijau-muda);
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.info strong {
+    display: block;
+    font-size: 22px;
+    color: var(--hijau-tua);
+}
+
+.info span {
+    font-size: 13px;
+    color: var(--abu);
+}
+
+/* =========================
+   POTENSI
+========================= */
+#potensi {
+    background: #eef8f0;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    border-radius: 30px;
+    padding: 30px;
+    transition: 0.3s;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.card:hover {
+    transform: translateY(-10px) rotate(-1deg);
+}
+
+.icon {
+    width: 65px;
+    height: 65px;
+    background: var(--kuning);
+    border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 30px;
+    margin-bottom: 22px;
+}
+
+.card h3 {
+    font-size: 23px;
+    margin-bottom: 12px;
+    color: var(--hijau-tua);
+}
+
+.card p {
+    line-height: 1.7;
+    color: var(--abu);
+}
+
+/* =========================
+   GALERI
+========================= */
+#galeri {
+    background: white;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 18px;
+}
+
+.gallery-item {
+    height: 260px;
+    border-radius: 25px;
+    overflow: hidden;
+    position: relative;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+.gallery-item.large {
+    grid-row: span 2;
+    height: 538px;
+}
+
+/* =========================
+   KONTAK
+========================= */
+#kontak {
+    background: #eef8f0;
+    min-height: 80vh;
+}
+
+.contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+}
+
+.contact-card {
+    background: white;
+    padding: 35px;
+    border-radius: 30px;
+}
+
+.contact-card h3 {
+    font-size: 28px;
+    color: var(--hijau-tua);
+    margin-bottom: 25px;
+}
+
+.contact-item {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #e8eee9;
+}
+
+.contact-icon {
+    width: 45px;
+    height: 45px;
+    background: var(--hijau-muda);
+    border-radius: 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 21px;
+}
+
+.contact-item p {
+    color: var(--abu);
+    font-size: 14px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+    background: var(--hijau-tua);
+    color: white;
+    padding: 35px 8%;
+    text-align: center;
+}
+
+footer p {
+    opacity: 0.8;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 850px) {
+
+    header {
+        width: 94%;
+    }
+
+    nav a {
+        padding: 7px 8px;
+        font-size: 12px;
+    }
+
+    .hero,
+    .about,
+    .contact {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-image {
+        height: 350px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 550px) {
+
+    section {
+        padding: 90px 6%;
+    }
+
+    header {
+        top: 8px;
+        padding: 10px 14px;
+    }
+
+    .logo {
+        font-size: 15px;
+    }
+
+    nav a {
+        font-size: 10px;
+        padding: 6px;
+    }
+
+    .hero h1 {
+        font-size: 52px;
+    }
+
+    .section-title h2 {
+        font-size: 35px;
+    }
+
+    .cards,
+    .gallery,
+    .info-box {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-item.large {
+        height: 260px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     NAVIGASI
+========================= -->
+<header>
+
+    <div class="logo">
+        SEMPARUK <span>KUALA</span>
+    </div>
+
+    <nav>
+        <a href="#beranda">Home</a>
+        <a href="#tentang">Tentang</a>
+        <a href="#potensi">Potensi</a>
+        <a href="#galeri">Galeri</a>
+        <a href="#kontak">Kontak</a>
+    </nav>
+
+</header>
+
+
+<!-- =========================
+     1. BERANDA
+========================= -->
+<section id="beranda">
+
+    <div class="container hero">
+
+        <div>
+
+            <div class="badge">
+                🌿 Jelajah Desa Kami
+            </div>
+
+            <h1>
+                SEMPARUK<br>
+                <span>KUALA.</span>
+            </h1>
+
+            <p>
+                Selamat datang di Semparuk Kuala,
+                sebuah desa yang menyimpan keindahan,
+                potensi, budaya, dan cerita menarik
+                dari Kabupaten Sambas, Kalimantan Barat.
+            </p>
+
+            <a href="#tentang" class="btn">
+                Kenalan dengan Desa →
+            </a>
+
+        </div>
+
+        <div class="hero-image"></div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     2. TENTANG DESA
+========================= -->
+<section id="tentang">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <small>KENALI KAMI</small>
+
+            <h2>Tentang Semparuk Kuala</h2>
+
+        </div>
+
+
+        <div class="about">
+
+            <div class="about-image"></div>
+
+
+            <div class="about-text">
+
+                <h3>
+                    Desa dengan cerita dan potensi ✨
+                </h3>
+
+                <p>
+                    Semparuk Kuala merupakan salah satu wilayah
+                    yang berada di Kecamatan Semparuk,
+                    Kabupaten Sambas, Kalimantan Barat.
+                </p>
+
+                <p>
+                    Desa ini memiliki kehidupan masyarakat
+                    yang dekat dengan lingkungan sekitar serta
+                    berbagai potensi yang dapat terus dikembangkan.
+                </p>
+
+
+                <div class="info-box">
+
+                    <div class="info">
+                        <strong>📍</strong>
+                        <span>Kecamatan Semparuk</span>
+                    </div>
+
+                    <div class="info">
+                        <strong>🌳</strong>
+                        <span>Kabupaten Sambas</span>
+                    </div>
+
+                    <div class="info">
+                        <strong>🌴</strong>
+                        <span>Kalimantan Barat</span>
+                    </div>
+
+                    <div class="info">
+                        <strong>🤝</strong>
+                        <span>Masyarakat Desa</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     3. POTENSI DESA
+========================= -->
+<section id="potensi">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <small>YANG KAMI PUNYA</small>
+
+            <h2>Potensi Desa 🌱</h2>
+
+        </div>
+
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="icon">🌾</div>
+
+                <h3>Pertanian</h3>
+
+                <p>
+                    Potensi pertanian menjadi salah satu
+                    bagian penting dalam kehidupan masyarakat
+                    dan perekonomian desa.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">🐟</div>
+
+                <h3>Perikanan</h3>
+
+                <p>
+                    Lingkungan perairan dan sumber daya
+                    lokal dapat menjadi potensi yang
+                    terus dikembangkan.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">🏡</div>
+
+                <h3>Wisata</h3>
+
+                <p>
+                    Suasana desa yang asri dan kehidupan
+                    masyarakat menjadi bagian dari daya
+                    tarik Semparuk Kuala.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">🍜</div>
+
+                <h3>Kuliner</h3>
+
+                <p>
+                    Berbagai makanan dan olahan khas
+                    masyarakat dapat menjadi bagian dari
+                    kekayaan lokal desa.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">🎨</div>
+
+                <h3>Budaya</h3>
+
+                <p>
+                    Tradisi dan kebiasaan masyarakat
+                    menjadi identitas yang membuat
+                    desa semakin menarik.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="icon">🛍️</div>
+
+                <h3>UMKM</h3>
+
+                <p>
+                    Usaha masyarakat lokal memiliki
+                    peluang untuk berkembang dan dikenal
+                    lebih luas.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     4. GALERI
+========================= -->
+<section id="galeri">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <small>MOMEN & SUASANA</small>
+
+            <h2>Galeri Desa 📸</h2>
+
+        </div>
+
+
+        <div class="gallery">
+
+            <div class="gallery-item large">
+                <img src="galeri1.jpg" alt="Semparuk Kuala">
+            </div>
+
+            <div class="gallery-item">
+                <img src="galeri2.jpg" alt="Suasana Desa">
+            </div>
+
+            <div class="gallery-item">
+                <img src="galeri3.jpg" alt="Kegiatan Desa">
+            </div>
+
+            <div class="gallery-item">
+                <img src="galeri4.jpg" alt="Potensi Desa">
+            </div>
+
+            <div class="gallery-item">
+                <img src="galeri5.jpg" alt="Lingkungan Desa">
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     5. KONTAK
+========================= -->
+<section id="kontak">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <small>YUK BERKUNJUNG</small>
+
+            <h2>Temukan Kami 📍</h2>
+
+        </div>
+
+
+        <div class="contact">
+
+            <div class="contact-card">
+
+                <h3>Semparuk Kuala</h3>
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">📍</div>
+
+                    <div>
+                        <strong>Lokasi</strong>
+                        <p>
+                            Kecamatan Semparuk,
+                            Kabupaten Sambas,
+                            Kalimantan Barat
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">🌿</div>
+
+                    <div>
+                        <strong>Wilayah</strong>
+                        <p>
+                            Kabupaten Sambas,
+                            Kalimantan Barat
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">💚</div>
+
+                    <div>
+                        <strong>Datang & Kenali</strong>
+                        <p>
+                            Temukan cerita dan potensi
+                            lokal Semparuk Kuala.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="contact-card">
+
+                <h3>Pesan untuk Desa 💌</h3>
+
+                <p style="line-height:1.8;color:#68756c;">
+                    Semparuk Kuala bukan hanya sebuah tempat,
+                    tetapi juga tentang masyarakat, lingkungan,
+                    budaya, dan potensi yang ada di dalamnya.
+                </p>
+
+                <a href="#beranda" class="btn">
+                    Kembali ke Atas ↑
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+<footer>
+
+    <strong>SEMPARUK KUALA 🌿</strong>
+
+    <p>
+        Kecamatan Semparuk • Kabupaten Sambas • Kalimantan Barat
+    </p>
+
+    <p>
+        © 2026 Website Profil Desa
+    </p>
+
+</footer>
+
+</body>
+</html>
