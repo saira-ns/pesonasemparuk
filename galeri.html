@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galeri & Dokumenter — Semparuk Kuala</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="mainHeader">
+  <a href="index.html" class="brand-link" aria-label="Beranda">
+    <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
+      <path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-9.5z"/>
+    </svg>
+  </a>
+  <button class="nav-toggle" id="navToggle" aria-label="Buka menu">
+    <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/>
+    </svg>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Beranda</a></li>
+    <li><a href="tentang.html">Tentang</a></li>
+    <li><a href="potensi.html">Potensi</a></li>
+    <li><a href="galeri.html" class="active">Galeri</a></li>
+    <li><a href="kontak.html">Kontak</a></li>
+  </ul>
+</header>
+
+<section id="galeri">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Dokumentasi Desa</span>
+      <h2 class="section-title">GALERI SEMPARUK KUALA</h2>
+      <p class="section-desc">Potret kehidupan desa, keindahan alam, kegiatan masyarakat hingga berbagai sudut yang menyimpan cerita.</p>
+    </div>
+
+    <div class="filter-tabs">
+      <button class="filter-btn active" onclick="filterGallery('all',this)">Semua Foto</button>
+      <button class="filter-btn" onclick="filterGallery('alam',this)">Panorama Alam</button>
+      <button class="filter-btn" onclick="filterGallery('kegiatan',this)">Semarak Warga</button>
+      <button class="filter-btn" onclick="filterGallery('fasilitas',this)">Ikon & Fasilitas</button>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-card featured" data-category="alam" onclick="openModal('sungai.jpg','Aliran Sungai & Kanal Semparuk','Aliran sungai dan kanal menjadi bagian dari kehidupan masyarakat Semparuk Kuala.')">
+        <img src="sungai.jpg" alt="Sungai Semparuk Kuala">
+        <div class="gallery-overlay"><span>Panorama Alam</span><h3>Aliran Sungai & Kanal Semparuk</h3><p>Perairan yang menjadi bagian dari keseharian masyarakat desa.</p></div>
+      </div>
+      <div class="gallery-card" data-category="fasilitas" onclick="openModal('masjid.jpg','Masjid Megah Saat Senja','Masjid menjadi salah satu pusat kegiatan keagamaan dan kebersamaan warga.')">
+        <img src="masjid.jpg" alt="Masjid Semparuk Kuala">
+        <div class="gallery-overlay"><span>Ikon Desa</span><h3>Masjid Megah Saat Senja</h3><p>Simbol kehidupan spiritual dan kebersamaan.</p></div>
+      </div>
+      <div class="gallery-card" data-category="alam" onclick="openModal('pinang.jpg','Pekarangan Kelapa & Pinang','Pepohonan hijau menciptakan suasana khas pedesaan Sambas.')">
+        <img src="pinang.jpg" alt="Kelapa dan pinang">
+        <div class="gallery-overlay"><span>Panorama Alam</span><h3>Pekarangan Kelapa & Pinang</h3><p>Suasana hijau yang menjadi ciri lingkungan pedesaan.</p></div>
+      </div>
+      <div class="gallery-card" data-category="alam" onclick="openModal('sunset.jpg','Siluet Senja di Persawahan','Cahaya sore menghadirkan suasana hangat di sekitar persawahan.')">
+        <img src="sunset.jpg" alt="Senja di persawahan">
+        <div class="gallery-overlay"><span>Panorama Alam</span><h3>Siluet Senja di Persawahan</h3><p>Ketenangan alam desa dalam cahaya penghujung hari.</p></div>
+      </div>
+      <div class="gallery-card" data-category="kegiatan" onclick="openModal('lomba.jpg','Keseruan Lomba Tradisional','Kegiatan perlombaan menghadirkan tawa dan kebersamaan masyarakat.')">
+        <img src="lomba.jpg" alt="Lomba tradisional">
+        <div class="gallery-overlay"><span>Semarak Warga</span><h3>Keseruan Lomba Tradisional</h3><p>Antusiasme masyarakat dalam momen kebersamaan.</p></div>
+      </div>
+      <div class="gallery-card" data-category="kegiatan" onclick="openModal('anak.jpg','Generasi Ceria Desa','Keceriaan anak-anak menjadi bagian dari kehidupan desa.')">
+        <img src="anak.jpg" alt="Anak-anak desa">
+        <div class="gallery-overlay"><span>Semarak Warga</span><h3>Generasi Ceria Desa</h3><p>Keceriaan generasi muda dalam lingkungan yang hangat.</p></div>
+      </div>
+      <div class="gallery-card" data-category="fasilitas" onclick="openModal('madrasah.jpg','Sarana Pendidikan Al-Hidayah','Sarana pendidikan menjadi ruang belajar dan membangun karakter.')">
+        <img src="madrasah.jpg" alt="Madrasah Al-Hidayah">
+        <div class="gallery-overlay"><span>Fasilitas Desa</span><h3>Sarana Pendidikan Al-Hidayah</h3><p>Tempat tumbuh dan belajar generasi penerus.</p></div>
+      </div>
+      <div class="gallery-card" data-category="kegiatan" onclick="openModal('penonton.jpg','Kebersamaan & Dukungan Warga','Warga berkumpul dan memberikan dukungan dalam kegiatan desa.')">
+        <img src="penonton.jpg" alt="Warga berkumpul">
+        <div class="gallery-overlay"><span>Semarak Warga</span><h3>Kebersamaan & Dukungan Warga</h3><p>Guyub, hangat dan penuh semangat kebersamaan.</p></div>
+      </div>
+      <div class="gallery-card" data-category="kegiatan" onclick="openModal('pemuda.jpg','Pemuda & Olahraga Desa','Kegiatan olahraga menjadi ruang membangun sportivitas dan kekompakan.')">
+        <img src="pemuda.jpg" alt="Pemuda berolahraga">
+        <div class="gallery-overlay"><span>Semarak Warga</span><h3>Pemuda & Olahraga Desa</h3><p>Semangat generasi muda dalam kegiatan bersama.</p></div>
+      </div>
+      <div class="gallery-card" data-category="kegiatan" onclick="openModal('teras.jpg','Canda Tawa Suasana Teras','Teras rumah menjadi ruang sederhana untuk berbincang dan menikmati waktu bersama.')">
+        <img src="teras.jpg" alt="Suasana teras">
+        <div class="gallery-overlay"><span>Semarak Warga</span><h3>Canda Tawa Suasana Teras</h3><p>Kehangatan interaksi dalam kehidupan sehari-hari.</p></div>
+      </div>
+      <div class="gallery-card" data-category="kegiatan" onclick="openModal('matatertutup.jpg','Semarak Lomba Mata Tertutup','Lomba rakyat menghadirkan suasana penuh tawa dan antusiasme.')">
+        <img src="matatertutup.jpg" alt="Lomba mata tertutup">
+        <div class="gallery-overlay"><span>Semarak Warga</span><h3>Semarak Lomba Mata Tertutup</h3><p>Keceriaan sederhana yang menyatukan masyarakat.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="video-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Liputan Desa</span>
+      <h2 class="section-title">DOKUMENTER SEMPARUK KUALA</h2>
+      <p class="section-desc">Nikmati suasana alam dan kehidupan Semparuk Kuala melalui dokumentasi video desa.</p>
+    </div>
+
+    <div class="video-list">
+
+      <div class="video-box reveal">
+        <div class="video-player">
+          <video id="videoSunset" controls preload="metadata" playsinline webkit-playsinline poster="./sunset.jpg">
+            <source src="./sunset.mp4" type="video/mp4">
+            Browser Anda tidak mendukung video HTML5.
+          </video>
+          <div class="video-poster" id="posterSunset" style="background-image:url('./sunset.jpg')" onclick="startVideo('videoSunset','posterSunset')">
+            <div class="play-circle">▶</div>
+            <p>Putar Dokumenter Senja</p>
+          </div>
+          <div class="video-error" id="errorSunset">
+            Video gagal dimuat. Pastikan file <b>sunset.mp4</b> berada satu folder dengan file HTML.
+          </div>
+        </div>
+
+        <div class="video-details">
+          <span class="video-badge">DOKUMENTER • PESONA SENJA</span>
+          <h3>Keindahan Senja & Persawahan Desa</h3>
+          <p>
+            Nikmati suasana sore yang tenang ketika cahaya matahari perlahan berubah
+            dan menciptakan warna hangat di sekitar persawahan dan lingkungan Desa Semparuk Kuala.
+          </p>
+          <button class="btn-primary" onclick="startVideo('videoSunset','posterSunset')">▶ Tonton Video Sunset</button>
+        </div>
+      </div>
+
+      <div class="video-box reverse reveal">
+        <div class="video-details">
+          <span class="video-badge">DOKUMENTER • PERAIRAN</span>
+          <h3>Keteduhan Sungai & Kanal Desa</h3>
+          <p>
+            Perairan menjadi salah satu bagian penting dari kehidupan masyarakat.
+            Video ini memperlihatkan suasana sungai dan kanal yang mengalir di sekitar desa.
+          </p>
+          <button class="btn-primary" onclick="startVideo('videoSungai','posterSungai')">▶ Tonton Video Sungai</button>
+        </div>
+
+        <div class="video-player">
+          <video id="videoSungai" controls preload="metadata" playsinline webkit-playsinline poster="./sungai.jpg">
+            <source src="./sungai.mp4" type="video/mp4">
+            Browser Anda tidak mendukung video HTML5.
+          </video>
+          <div class="video-poster" id="posterSungai" style="background-image:url('./sungai.jpg')" onclick="startVideo('videoSungai','posterSungai')">
+            <div class="play-circle">▶</div>
+            <p>Putar Dokumenter Sungai</p>
+          </div>
+          <div class="video-error" id="errorSungai">
+            Video gagal dimuat. Pastikan file <b>sungai.mp4</b> berada satu folder dengan file HTML.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="modal" id="imageModal" onclick="closeModal(event)">
+  <div class="modal-content">
+    <button class="close-modal" onclick="closeModalForce()" aria-label="Tutup">×</button>
+    <img id="modalImage" src="" alt="">
+    <div class="modal-info">
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-title">SEMPARUK <span>KUALA</span></div>
+    <p class="footer-sub">Kecamatan Semparuk • Kabupaten Sambas • Kalimantan Barat</p>
+    <div class="footer-line"></div>
+    <p class="footer-copy">© 2026 Dokumentasi & Profil Semparuk Kuala. Dibuat untuk memperkenalkan pesona, kehidupan dan potensi desa.</p>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
