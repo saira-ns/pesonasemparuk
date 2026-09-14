@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontak — Semparuk Kuala</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header id="mainHeader">
+  <a href="index.html" class="brand-link" aria-label="Beranda">
+    <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
+      <path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-9.5z"/>
+    </svg>
+  </a>
+  <button class="nav-toggle" id="navToggle" aria-label="Buka menu">
+    <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/>
+    </svg>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Beranda</a></li>
+    <li><a href="tentang.html">Tentang</a></li>
+    <li><a href="potensi.html">Potensi</a></li>
+    <li><a href="galeri.html">Galeri</a></li>
+    <li><a href="kontak.html" class="active">Kontak</a></li>
+  </ul>
+</header>
+
+<section id="kontak">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-label">Informasi Desa</span>
+      <h2 class="section-title">HUBUNGI & KUNJUNGI KAMI</h2>
+      <p class="section-desc">Semparuk Kuala terbuka untuk masyarakat yang ingin mengenal lebih jauh kehidupan, lingkungan, kegiatan dan potensi desa.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-card reveal">
+        <h3>Pusat Informasi Desa</h3>
+
+        <div class="contact-item">
+          <div class="premium-icon blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 21s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <div><strong>Lokasi</strong><p>Desa Semparuk Kuala, Kecamatan Semparuk, Kabupaten Sambas, Kalimantan Barat.</p></div>
+        </div>
+
+        <div class="contact-item">
+          <div class="premium-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          </div>
+          <div><strong>Jam Pelayanan</strong><p>Senin sampai Jumat, pukul 08.00 hingga 15.30 WIB.</p></div>
+        </div>
+
+        <div class="contact-item">
+          <div class="premium-icon gold">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          </div>
+          <div><strong>Email</strong><p><a href="mailto:sairanvkasdna@gmail.com" style="color:var(--green);font-weight:800;text-decoration:none">sairanvkasdna@gmail.com</a></p></div>
+        </div>
+      </div>
+
+      <div class="contact-card reveal">
+        <h3>Kirim Pesan & Saran</h3>
+        <form id="formKontak" style="display:flex; flex-direction:column; gap:12px; margin-top:15px;">
+          <div>
+            <label style="font-size:12px; font-weight:800; color:var(--text); display:block; margin-bottom:4px;">Nama Lengkap</label>
+            <input type="text" id="inputNama" placeholder="Masukkan nama Anda" required style="width:100%; padding:10px 14px; border-radius:10px; border:1px solid #dfe6d6; font-family:inherit; font-size:13px; outline:none;">
+          </div>
+          
+          <div>
+            <label style="font-size:12px; font-weight:800; color:var(--text); display:block; margin-bottom:4px;">Email / No. HP</label>
+            <input type="text" id="inputEmail" placeholder="contoh@email.com / 0812xxx" required style="width:100%; padding:10px 14px; border-radius:10px; border:1px solid #dfe6d6; font-family:inherit; font-size:13px; outline:none;">
+          </div>
+
+          <div>
+            <label style="font-size:12px; font-weight:800; color:var(--text); display:block; margin-bottom:4px;">Pesan / Saran</label>
+            <textarea id="inputPesan" rows="4" placeholder="Tuliskan pesan atau saran Anda..." required style="width:100%; padding:10px 14px; border-radius:10px; border:1px solid #dfe6d6; font-family:inherit; font-size:13px; outline:none; resize:vertical;"></textarea>
+          </div>
+
+          <button type="submit" id="btnKirim" class="btn-primary" style="margin-top:6px; cursor:pointer;">
+            Kirim Pesan
+          </button>
+        </form>
+        <div id="statusPesan" style="margin-top:12px; font-size:12px; font-weight:700; display:none;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-title">SEMPARUK <span>KUALA</span></div>
+    <p class="footer-sub">Kecamatan Semparuk • Kabupaten Sambas • Kalimantan Barat</p>
+    <div class="footer-line"></div>
+    <p class="footer-copy">© 2026 Dokumentasi & Profil Semparuk Kuala. Dibuat untuk memperkenalkan pesona, kehidupan dan potensi desa.</p>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
