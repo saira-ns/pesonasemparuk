@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kontak — Semparuk Kuala</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+
+            <a href="index.html" class="brand">
+                <span class="brand-mark">SK</span>
+
+                <span class="brand-text">
+                    <strong>WEBSITE DESA</strong>
+                    <small>Semparuk Kuala</small>
+                </span>
+            </a>
+
+            <div class="nav-menu">
+                <a href="index.html">Beranda</a>
+                <a href="tentang.html">Tentang</a>
+                <a href="potensi.html">Potensi</a>
+                <a href="galeri.html">Galeri</a>
+                <a href="kontak.html" class="active">Kontak</a>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <!-- PAGE HERO -->
+    <header class="page-hero">
+        <div class="container">
+            <span class="eyebrow">HUBUNGI KAMI</span>
+
+            <h1>
+                Mari terhubung dengan
+                <span>Semparuk Kuala</span>
+            </h1>
+
+            <p>
+                Punya pertanyaan, saran, atau ingin mengetahui lebih
+                banyak tentang Semparuk Kuala? Sampaikan melalui kontak
+                yang tersedia di bawah ini.
+            </p>
+        </div>
+    </header>
+
+
+    <!-- CONTACT SECTION -->
+    <main>
+
+        <section class="section">
+            <div class="container">
+
+                <div class="contact-grid">
+
+                    <!-- CONTACT INFORMATION -->
+                    <div class="contact-info">
+
+                        <span class="eyebrow">INFORMASI</span>
+
+                        <h2>
+                            Hubungi kami
+                        </h2>
+
+                        <p>
+                            Silakan gunakan informasi berikut untuk
+                            menghubungi pengelola desa atau kirimkan
+                            pesan melalui formulir yang tersedia.
+                        </p>
+
+
+                        <div class="contact-list">
+
+                            <div class="contact-item">
+                                <div class="contact-icon">📍</div>
+
+                                <div>
+                                    <strong>Alamat</strong>
+                                    <p>
+                                        Semparuk Kuala, Kalimantan Barat
+                                    </p>
+                                </div>
+                            </div>
+
+
+                            <div class="contact-item">
+                                <div class="contact-icon">✉️</div>
+
+                                <div>
+                                    <strong>Email</strong>
+                                    <p>
+                                        emaildesa@example.com
+                                    </p>
+                                </div>
+                            </div>
+
+
+                            <div class="contact-item">
+                                <div class="contact-icon">📞</div>
+
+                                <div>
+                                    <strong>Telepon</strong>
+                                    <p>
+                                        +62 8xx-xxxx-xxxx
+                                    </p>
+                                </div>
+                            </div>
+
+
+                            <div class="contact-item">
+                                <div class="contact-icon">◎</div>
+
+                                <div>
+                                    <strong>Media Sosial</strong>
+                                    <p>
+                                        Instagram / Facebook Desa
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CONTACT FORM -->
+                    <div class="contact-card">
+
+                        <span class="eyebrow">SARAN & PESAN</span>
+
+                        <h2>
+                            Kirim pesan
+                        </h2>
+
+                        <p>
+                            Sampaikan pertanyaan, saran, kritik,
+                            atau informasi kepada pengelola desa.
+                        </p>
+
+
+                        <!-- SUDAH TERHUBUNG KE script.js -->
+                        <form id="saranForm">
+
+                            <div class="form-group">
+                                <label for="nama">Nama</label>
+
+                                <input
+                                    type="text"
+                                    id="nama"
+                                    placeholder="Nama kamu"
+                                    required
+                                >
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="email">Email</label>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    placeholder="Email kamu"
+                                    required
+                                >
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="kategori">Kategori</label>
+
+                                <select id="kategori">
+                                    <option value="Saran">Saran</option>
+                                    <option value="Kritik">Kritik</option>
+                                    <option value="Pertanyaan">Pertanyaan</option>
+                                    <option value="Lainnya">Lainnya</option>
+                                </select>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="pesan">Pesan</label>
+
+                                <textarea
+                                    id="pesan"
+                                    placeholder="Tulis pesan kamu..."
+                                    required
+                                ></textarea>
+                            </div>
+
+
+                            <button type="submit" class="btn btn-primary">
+                                Kirim Pesan
+                            </button>
+
+
+                            <!-- STATUS DARI script.js -->
+                            <p
+                                id="statusPesan"
+                                style="font-size:12px;color:#87938e;margin-top:13px"
+                            ></p>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- MAP -->
+        <section class="section section-soft">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="eyebrow">LOKASI</span>
+
+                    <h2>
+                        Lokasi Semparuk Kuala
+                    </h2>
+
+                    <p>
+                        Informasi lokasi resmi desa dapat ditambahkan
+                        pada bagian ini.
+                    </p>
+                </div>
+
+
+                <div class="map-placeholder">
+                    <div>
+                        <span class="map-icon">📍</span>
+
+                        <h3>
+                            Semparuk Kuala
+                        </h3>
+
+                        <p>
+                            Kalimantan Barat, Indonesia
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+
+            <div class="footer-content">
+
+                <div>
+                    <strong>Semparuk Kuala</strong>
+
+                    <p>
+                        Website Promosi Desa
+                    </p>
+                </div>
+
+                <p>
+                    © 2026 Semparuk Kuala
+                </p>
+
+            </div>
+
+        </div>
+    </footer>
+
+
+    <!-- SCRIPT GOOGLE SHEETS -->
+    <script src="script.js"></script>
+
+</body>
+</html>
