@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -453,16 +454,6 @@ textarea{
     font-weight:700;
 }
 
-.nama-cell span{
-    display:block;
-
-    color:#8a9690;
-
-    font-size:11px;
-
-    margin-top:2px;
-}
-
 .judul-cell{
     color:var(--dark)!important;
     font-weight:700;
@@ -508,6 +499,11 @@ textarea{
     white-space:nowrap;
 }
 
+.status-menunggu{
+    background:#fff4d9;
+    color:#916b20;
+}
+
 .status-baru{
     background:#fff4d9;
     color:#916b20;
@@ -519,6 +515,11 @@ textarea{
 }
 
 .status-selesai{
+    background:#e4f4eb;
+    color:#287052;
+}
+
+.status-sudah-dibalas{
     background:#e4f4eb;
     color:#287052;
 }
@@ -667,6 +668,7 @@ textarea{
 }
 
 @keyframes modalIn{
+
     from{
         opacity:0;
         transform:translateY(10px);
@@ -676,6 +678,7 @@ textarea{
         opacity:1;
         transform:translateY(0);
     }
+
 }
 
 .modal-box h2{
@@ -838,6 +841,7 @@ textarea{
 }
 
 </style>
+
 </head>
 
 
@@ -859,8 +863,15 @@ textarea{
             </span>
 
             <span class="brand-text">
-                <strong>WEBSITE DESA</strong>
-                <small>Semparuk Kuala</small>
+
+                <strong>
+                    WEBSITE DESA
+                </strong>
+
+                <small>
+                    Semparuk Kuala
+                </small>
+
             </span>
 
         </a>
@@ -888,7 +899,7 @@ textarea{
                 Aduan
             </a>
 
-            <a href="login.html">
+            <a href="login.html" onclick="logoutAdmin()">
                 Keluar
             </a>
 
@@ -921,6 +932,7 @@ textarea{
             kepada masyarakat.
         </p>
 
+
         <div class="admin-actions">
 
             <button
@@ -930,6 +942,7 @@ textarea{
             >
                 ↻ Muat Data
             </button>
+
 
             <a
                 href="kontak.html"
@@ -956,34 +969,69 @@ textarea{
 <div class="container">
 
 
-<!-- STATISTIK -->
+<!-- ===============================
+     STATISTIK
+================================ -->
 
 <div class="admin-stats">
 
     <div class="admin-stat">
-        <span>Total Pengaduan</span>
-        <strong id="totalAduan">0</strong>
+
+        <span>
+            Total Pengaduan
+        </span>
+
+        <strong id="totalAduan">
+            0
+        </strong>
+
     </div>
 
-    <div class="admin-stat">
-        <span>Pengaduan Baru</span>
-        <strong id="totalBaru">0</strong>
-    </div>
 
     <div class="admin-stat">
-        <span>Sedang Diproses</span>
-        <strong id="totalProses">0</strong>
+
+        <span>
+            Menunggu
+        </span>
+
+        <strong id="totalBaru">
+            0
+        </strong>
+
     </div>
 
+
     <div class="admin-stat">
-        <span>Selesai</span>
-        <strong id="totalSelesai">0</strong>
+
+        <span>
+            Sedang Diproses
+        </span>
+
+        <strong id="totalProses">
+            0
+        </strong>
+
+    </div>
+
+
+    <div class="admin-stat">
+
+        <span>
+            Selesai
+        </span>
+
+        <strong id="totalSelesai">
+            0
+        </strong>
+
     </div>
 
 </div>
 
 
-<!-- PANEL -->
+<!-- ===============================
+     PANEL
+================================ -->
 
 <div class="admin-panel">
 
@@ -1030,23 +1078,14 @@ textarea{
 <tr>
 
 <th>NO</th>
-
 <th>TANGGAL</th>
-
 <th>TOKEN PENGADUAN</th>
-
 <th>NAMA</th>
-
 <th>EMAIL</th>
-
 <th>KATEGORI</th>
-
 <th>JUDUL ADUAN</th>
-
 <th>ISI ADUAN</th>
-
 <th>STATUS</th>
-
 <th>BALASAN</th>
 
 </tr>
@@ -1058,7 +1097,10 @@ textarea{
 
 <tr>
 
-<td colspan="10" class="table-message">
+<td
+    colspan="10"
+    class="table-message"
+>
 
 <strong>
 Memuat data...
@@ -1105,6 +1147,7 @@ Panel Administrator Website Desa
 
 </div>
 
+
 <p>
 © 2026 Semparuk Kuala
 </p>
@@ -1129,6 +1172,7 @@ Panel Administrator Website Desa
 Balas Pengaduan
 </h2>
 
+
 <p
     class="modal-info"
     id="modalInfo"
@@ -1141,10 +1185,11 @@ Token pengaduan
 Status Pengaduan
 </label>
 
+
 <select id="modalStatus">
 
-<option value="Baru">
-Baru
+<option value="Menunggu">
+Menunggu
 </option>
 
 <option value="Diproses">
@@ -1162,6 +1207,7 @@ Selesai
 Balasan Admin
 </label>
 
+
 <textarea
     id="modalBalasanText"
     placeholder="Tulis balasan untuk masyarakat..."
@@ -1177,6 +1223,7 @@ Balasan Admin
 >
 Batal
 </button>
+
 
 <button
     type="button"
@@ -1196,33 +1243,75 @@ Simpan Balasan
 
 <script>
 
-
-/* ===============================
+/* =====================================================
    GOOGLE APPS SCRIPT
-================================ */
+===================================================== */
 
 const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycby2SshHN0YTUdKkvCnsULps6WO3jkhNK8LHqG2dEwd4xGqXHVGG_J0XFob5pUgkycSd/exec";
+"https://script.google.com/macros/s/AKfycbwiFekXNS2naIya8pPjoScS424VBe4sZxllf2VEU3-un4UshPAyrZED2afYIEV-idjJ/exec";
 
 
-/* ===============================
-   DATA
-================================ */
+/* =====================================================
+   DATA ADMIN
+===================================================== */
 
 let semuaAduan = [];
 
 let aduanDipilih = null;
 
 
-/* ===============================
+/* =====================================================
+   CEK LOGIN
+===================================================== */
+
+function cekLogin(){
+
+    const sudahLogin =
+        sessionStorage.getItem(
+            "adminLogin"
+        );
+
+    if(sudahLogin !== "true"){
+
+        window.location.href =
+            "login.html";
+
+        return false;
+
+    }
+
+    return true;
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+function logoutAdmin(){
+
+    sessionStorage.removeItem(
+        "adminLogin"
+    );
+
+    sessionStorage.removeItem(
+        "adminUsername"
+    );
+
+}
+
+
+/* =====================================================
    NORMALISASI DATA
-================================ */
+===================================================== */
 
 function normalisasiAduan(item){
 
     return {
 
-        no:
+        nomor:
+            item.nomor ??
             item.no ??
             item.NO ??
             "",
@@ -1270,44 +1359,138 @@ function normalisasiAduan(item){
         status:
             item.status ??
             item.STATUS ??
-            "Baru",
+            "Menunggu",
 
         balasan:
             item.balasan ??
             item.BALASAN ??
-            ""
+            "-"
 
     };
 
 }
 
 
-/* ===============================
+/* =====================================================
    MUAT DATA
-================================ */
+   SESUAI DENGAN doGet action=list
+===================================================== */
 
 async function muatData(){
 
     const tabel =
-        document.getElementById("tabelAduan");
+        document.getElementById(
+            "tabelAduan"
+        );
 
 
     tabel.innerHTML = `
+
         <tr>
-            <td colspan="10" class="table-message">
-                <strong>Memuat data...</strong>
+
+            <td
+                colspan="10"
+                class="table-message"
+            >
+
+                <strong>
+                    Memuat data...
+                </strong>
+
                 Mengambil data pengaduan dari Google Sheets.
+
             </td>
+
         </tr>
+
     `;
+
+
+    const username =
+        sessionStorage.getItem(
+            "adminUsername"
+        );
+
+
+    /*
+     * Password tidak disimpan di browser.
+     *
+     * Untuk action=list pada Apps Script,
+     * password diperlukan.
+     *
+     * Karena login.html hanya menyimpan
+     * status dan username, kita gunakan
+     * kembali password melalui session.
+     */
+
+
+    const password =
+        sessionStorage.getItem(
+            "adminPassword"
+        );
+
+
+    if(!username || !password){
+
+        tabel.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="10"
+                    class="table-message"
+                >
+
+                    <strong>
+                        Sesi admin berakhir
+                    </strong>
+
+                    Silakan login kembali.
+
+                </td>
+
+            </tr>
+
+        `;
+
+
+        setTimeout(
+            function(){
+
+                window.location.href =
+                    "login.html";
+
+            },
+            1200
+        );
+
+        return;
+
+    }
 
 
     try{
 
+        /*
+         * Sesuai Apps Script:
+         *
+         * doGet()
+         * action = list
+         * username
+         * password
+         */
+
+        const url =
+            SCRIPT_URL +
+            "?action=list" +
+            "&username=" +
+            encodeURIComponent(username) +
+            "&password=" +
+            encodeURIComponent(password);
+
+
         const response =
-            await fetch(
-                SCRIPT_URL + "?action=getAduan"
-            );
+            await fetch(url);
 
 
         const data =
@@ -1331,12 +1514,19 @@ async function muatData(){
 
 
         semuaAduan =
-            rawData.map(normalisasiAduan);
+            rawData.map(
+                normalisasiAduan
+            );
 
 
-        tampilkanAduan(semuaAduan);
+        tampilkanAduan(
+            semuaAduan
+        );
 
-        updateStatistik(semuaAduan);
+
+        updateStatistik(
+            semuaAduan
+        );
 
 
     }catch(error){
@@ -1348,18 +1538,27 @@ async function muatData(){
 
 
         tabel.innerHTML = `
+
             <tr>
-                <td colspan="10" class="table-message">
+
+                <td
+                    colspan="10"
+                    class="table-message"
+                >
 
                     <strong>
                         Data belum dapat dimuat
                     </strong>
 
-                    Pastikan Apps Script sudah benar
-                    dan fungsi getAduan tersedia.
+                    ${escapeHTML(
+                        error.message ||
+                        "Terjadi kesalahan koneksi."
+                    )}
 
                 </td>
+
             </tr>
+
         `;
 
     }
@@ -1367,21 +1566,28 @@ async function muatData(){
 }
 
 
-/* ===============================
+/* =====================================================
    TAMPILKAN DATA
-================================ */
+===================================================== */
 
 function tampilkanAduan(data){
 
     const tabel =
-        document.getElementById("tabelAduan");
+        document.getElementById(
+            "tabelAduan"
+        );
 
 
     if(!data.length){
 
         tabel.innerHTML = `
+
             <tr>
-                <td colspan="10" class="table-message">
+
+                <td
+                    colspan="10"
+                    class="table-message"
+                >
 
                     <strong>
                         Belum ada pengaduan
@@ -1390,7 +1596,9 @@ function tampilkanAduan(data){
                     Pengaduan masyarakat akan muncul di sini.
 
                 </td>
+
             </tr>
+
         `;
 
         return;
@@ -1399,167 +1607,202 @@ function tampilkanAduan(data){
 
 
     tabel.innerHTML =
-        data.map((aduan)=>{
+        data.map(
+            function(aduan){
 
-            const status =
-                aduan.status || "Baru";
-
-
-            const statusClass =
-                status
-                .toLowerCase()
-                .replace(/\s+/g,"-");
+                const status =
+                    aduan.status ||
+                    "Menunggu";
 
 
-            /*
-             * Cari posisi asli dalam semuaAduan.
-             * Ini memperbaiki bug ketika pencarian digunakan.
-             */
-
-            const originalIndex =
-                semuaAduan.indexOf(aduan);
+                const statusClass =
+                    String(status)
+                    .toLowerCase()
+                    .replace(/\s+/g,"-");
 
 
-            return `
-
-            <tr>
-
-                <td>
-                    ${escapeHTML(
-                        aduan.no || "-"
-                    )}
-                </td>
+                const originalIndex =
+                    semuaAduan.indexOf(
+                        aduan
+                    );
 
 
-                <td>
-                    ${escapeHTML(
-                        aduan.tanggal || "-"
-                    )}
-                </td>
+                return `
 
+                <tr>
 
-                <td>
-
-                    <span class="token">
+                    <td>
                         ${escapeHTML(
-                            aduan.token || "-"
+                            aduan.nomor ||
+                            "-"
                         )}
-                    </span>
-
-                </td>
+                    </td>
 
 
-                <td class="nama-cell">
-
-                    <strong>
+                    <td>
                         ${escapeHTML(
-                            aduan.nama || "-"
+                            aduan.tanggal ||
+                            "-"
                         )}
-                    </strong>
-
-                </td>
+                    </td>
 
 
-                <td>
+                    <td>
 
-                    ${escapeHTML(
-                        aduan.email || "-"
-                    )}
+                        <span class="token">
 
-                </td>
-
-
-                <td>
-
-                    ${escapeHTML(
-                        aduan.kategori || "-"
-                    )}
-
-                </td>
-
-
-                <td class="judul-cell">
-
-                    ${escapeHTML(
-                        aduan.judul || "-"
-                    )}
-
-                </td>
-
-
-                <td class="isi-cell">
-
-                    ${escapeHTML(
-                        aduan.isi || "-"
-                    )}
-
-                </td>
-
-
-                <td>
-
-                    <span
-                        class="status-badge status-${statusClass}"
-                    >
-                        ${escapeHTML(status)}
-                    </span>
-
-                </td>
-
-
-                <td class="balasan-cell">
-
-                    ${
-                        aduan.balasan
-
-                        ?
-
-                        `
-                        <div class="balasan-text">
                             ${escapeHTML(
-                                aduan.balasan
+                                aduan.token ||
+                                "-"
                             )}
-                        </div>
-                        `
 
-                        :
+                        </span>
 
-                        `
-                        <div class="balasan-text balasan-kosong">
-                            Belum ada balasan.
-                        </div>
-                        `
-                    }
+                    </td>
 
 
-                    <button
-                        type="button"
-                        class="admin-reply-btn"
-                        onclick="bukaModal(${originalIndex})"
-                    >
+                    <td class="nama-cell">
+
+                        <strong>
+
+                            ${escapeHTML(
+                                aduan.nama ||
+                                "-"
+                            )}
+
+                        </strong>
+
+                    </td>
+
+
+                    <td>
+
+                        ${escapeHTML(
+                            aduan.email ||
+                            "-"
+                        )}
+
+                    </td>
+
+
+                    <td>
+
+                        ${escapeHTML(
+                            aduan.kategori ||
+                            "-"
+                        )}
+
+                    </td>
+
+
+                    <td class="judul-cell">
+
+                        ${escapeHTML(
+                            aduan.judul ||
+                            "-"
+                        )}
+
+                    </td>
+
+
+                    <td class="isi-cell">
+
+                        ${escapeHTML(
+                            aduan.isi ||
+                            "-"
+                        )}
+
+                    </td>
+
+
+                    <td>
+
+                        <span
+                            class="status-badge status-${statusClass}"
+                        >
+
+                            ${escapeHTML(
+                                status
+                            )}
+
+                        </span>
+
+                    </td>
+
+
+                    <td class="balasan-cell">
 
                         ${
-                            aduan.balasan
-                            ? "Ubah Balasan"
-                            : "Balas Aduan"
+                            aduan.balasan &&
+                            aduan.balasan !== "-"
+
+                            ?
+
+                            `
+
+                            <div class="balasan-text">
+
+                                ${escapeHTML(
+                                    aduan.balasan
+                                )}
+
+                            </div>
+
+                            `
+
+                            :
+
+                            `
+
+                            <div
+                                class="balasan-text balasan-kosong"
+                            >
+
+                                Belum ada balasan.
+
+                            </div>
+
+                            `
                         }
 
-                    </button>
 
-                </td>
+                        <button
+                            type="button"
+                            class="admin-reply-btn"
+                            onclick="bukaModal(${originalIndex})"
+                        >
 
-            </tr>
+                            ${
+                                aduan.balasan &&
+                                aduan.balasan !== "-"
 
-            `;
+                                ?
 
-        }).join("");
+                                "Ubah Balasan"
+
+                                :
+
+                                "Balas Aduan"
+                            }
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+                `;
+
+            }
+        )
+        .join("");
 
 }
 
 
-/* ===============================
+/* =====================================================
    STATISTIK
-================================ */
+===================================================== */
 
 function updateStatistik(data){
 
@@ -1570,39 +1813,48 @@ function updateStatistik(data){
     let selesai = 0;
 
 
-    data.forEach(aduan=>{
+    data.forEach(
+        function(aduan){
 
-        const status =
-            String(
-                aduan.status || "Baru"
-            )
-            .toLowerCase()
-            .trim();
+            const status =
+                String(
+                    aduan.status ||
+                    "Menunggu"
+                )
+                .toLowerCase()
+                .trim();
 
 
-        if(status === "baru"){
+            if(
+                status === "menunggu" ||
+                status === "baru"
+            ){
 
-            baru++;
+                baru++;
+
+            }
+
+
+            else if(
+                status === "diproses"
+            ){
+
+                proses++;
+
+            }
+
+
+            else if(
+                status === "selesai" ||
+                status === "sudah dibalas"
+            ){
+
+                selesai++;
+
+            }
 
         }
-
-        else if(
-            status === "diproses"
-        ){
-
-            proses++;
-
-        }
-
-        else if(
-            status === "selesai"
-        ){
-
-            selesai++;
-
-        }
-
-    });
+    );
 
 
     document.getElementById(
@@ -1631,9 +1883,9 @@ function updateStatistik(data){
 }
 
 
-/* ===============================
+/* =====================================================
    SEARCH
-================================ */
+===================================================== */
 
 function filterAduan(){
 
@@ -1658,44 +1910,48 @@ function filterAduan(){
 
 
     const hasil =
-        semuaAduan.filter(aduan=>{
+        semuaAduan.filter(
+            function(aduan){
 
-            return [
+                return [
 
-                aduan.nama,
+                    aduan.nama,
+                    aduan.email,
+                    aduan.token,
+                    aduan.kategori,
+                    aduan.judul,
+                    aduan.isi,
+                    aduan.status
 
-                aduan.email,
+                ]
+                .some(
+                    function(value){
 
-                aduan.token,
+                        return String(
+                            value || ""
+                        )
+                        .toLowerCase()
+                        .includes(
+                            keyword
+                        );
 
-                aduan.kategori,
+                    }
+                );
 
-                aduan.judul,
-
-                aduan.isi,
-
-                aduan.status
-
-            ]
-            .some(value=>
-
-                String(value || "")
-                .toLowerCase()
-                .includes(keyword)
-
-            );
-
-        });
+            }
+        );
 
 
-    tampilkanAduan(hasil);
+    tampilkanAduan(
+        hasil
+    );
 
 }
 
 
-/* ===============================
-   MODAL
-================================ */
+/* =====================================================
+   BUKA MODAL
+===================================================== */
 
 function bukaModal(index){
 
@@ -1724,28 +1980,40 @@ function bukaModal(index){
         "modalStatus"
     ).value =
         aduanDipilih.status ||
-        "Baru";
+        "Menunggu";
 
 
     document.getElementById(
         "modalBalasanText"
     ).value =
-        aduanDipilih.balasan ||
-        "";
+        aduanDipilih.balasan === "-"
+        ? ""
+        : (
+            aduanDipilih.balasan ||
+            ""
+        );
 
 
     document.getElementById(
         "modalBalasan"
-    ).classList.add("show");
+    )
+    .classList
+    .add("show");
 
 }
 
+
+/* =====================================================
+   TUTUP MODAL
+===================================================== */
 
 function tutupModal(){
 
     document.getElementById(
         "modalBalasan"
-    ).classList.remove("show");
+    )
+    .classList
+    .remove("show");
 
 
     document.getElementById(
@@ -1758,9 +2026,10 @@ function tutupModal(){
 }
 
 
-/* ===============================
+/* =====================================================
    SIMPAN BALASAN
-================================ */
+   SESUAI DENGAN doPost action=reply
+===================================================== */
 
 async function simpanBalasan(){
 
@@ -1769,6 +2038,34 @@ async function simpanBalasan(){
         alert(
             "Pengaduan belum dipilih."
         );
+
+        return;
+
+    }
+
+
+    const username =
+        sessionStorage.getItem(
+            "adminUsername"
+        );
+
+
+    const password =
+        sessionStorage.getItem(
+            "adminPassword"
+        );
+
+
+    if(!username || !password){
+
+        alert(
+            "Sesi admin sudah berakhir. Silakan login kembali."
+        );
+
+
+        window.location.href =
+            "login.html";
+
 
         return;
 
@@ -1784,7 +2081,8 @@ async function simpanBalasan(){
     const balasan =
         document.getElementById(
             "modalBalasanText"
-        ).value
+        )
+        .value
         .trim();
 
 
@@ -1817,15 +2115,45 @@ async function simpanBalasan(){
             new URLSearchParams();
 
 
+        /*
+         * SESUAI doPost Apps Script:
+         *
+         * action = reply
+         * username
+         * password
+         * token
+         * reply
+         * status
+         */
+
         data.append(
             "action",
-            "updateAduan"
+            "reply"
+        );
+
+
+        data.append(
+            "username",
+            username
+        );
+
+
+        data.append(
+            "password",
+            password
         );
 
 
         data.append(
             "token",
-            aduanDipilih.token || ""
+            aduanDipilih.token ||
+            ""
+        );
+
+
+        data.append(
+            "reply",
+            balasan
         );
 
 
@@ -1835,24 +2163,32 @@ async function simpanBalasan(){
         );
 
 
-        data.append(
-            "balasan",
-            balasan
-        );
+        const response =
+            await fetch(
+                SCRIPT_URL,
+                {
+                    method:"POST",
+                    body:data
+                }
+            );
 
 
-        await fetch(
-            SCRIPT_URL,
-            {
-                method:"POST",
-                body:data,
-                mode:"no-cors"
-            }
-        );
+        const result =
+            await response.json();
+
+
+        if(!result.success){
+
+            throw new Error(
+                result.message ||
+                "Balasan gagal disimpan."
+            );
+
+        }
 
 
         /*
-         * Perbarui tampilan lokal.
+         * Update tampilan lokal
          */
 
         aduanDipilih.status =
@@ -1877,17 +2213,21 @@ async function simpanBalasan(){
 
 
         alert(
-            "Balasan berhasil dikirim."
+            "Balasan berhasil disimpan."
         );
 
 
     }catch(error){
 
-        console.error(error);
+        console.error(
+            "Gagal menyimpan balasan:",
+            error
+        );
 
 
         alert(
-            "Balasan gagal dikirim. Silakan coba lagi."
+            error.message ||
+            "Balasan gagal disimpan. Silakan coba lagi."
         );
 
     }
@@ -1901,9 +2241,9 @@ async function simpanBalasan(){
 }
 
 
-/* ===============================
+/* =====================================================
    ESCAPE HTML
-================================ */
+===================================================== */
 
 function escapeHTML(value){
 
@@ -1937,12 +2277,14 @@ function escapeHTML(value){
 }
 
 
-/* ===============================
+/* =====================================================
    KLIK LUAR MODAL
-================================ */
+===================================================== */
 
 document
-    .getElementById("modalBalasan")
+    .getElementById(
+        "modalBalasan"
+    )
     .addEventListener(
         "click",
         function(e){
@@ -1959,9 +2301,9 @@ document
     );
 
 
-/* ===============================
+/* =====================================================
    ESC UNTUK TUTUP MODAL
-================================ */
+===================================================== */
 
 document.addEventListener(
     "keydown",
@@ -1979,11 +2321,15 @@ document.addEventListener(
 );
 
 
-/* ===============================
+/* =====================================================
    MULAI
-================================ */
+===================================================== */
 
-muatData();
+if(cekLogin()){
+
+    muatData();
+
+}
 
 </script>
 
