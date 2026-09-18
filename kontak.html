@@ -4,277 +4,453 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Kontak — Semparuk Kuala</title>
+    <title>Aduan Desa — Semparuk Kuala</title>
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
-    <!-- CSS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet"
+    >
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
+    <!-- ================= NAVBAR ================= -->
+
     <nav class="navbar">
         <div class="nav-container">
 
             <a href="index.html" class="brand">
+
                 <span class="brand-mark">SK</span>
 
                 <span class="brand-text">
                     <strong>WEBSITE DESA</strong>
                     <small>Semparuk Kuala</small>
                 </span>
+
             </a>
 
+
             <div class="nav-menu">
-                <a href="index.html">Beranda</a>
-                <a href="tentang.html">Tentang</a>
-                <a href="potensi.html">Potensi</a>
-                <a href="galeri.html">Galeri</a>
-                <a href="kontak.html" class="active">Kontak</a>
+
+                <a href="index.html">
+                    Beranda
+                </a>
+
+                <a href="tentang.html">
+                    Tentang
+                </a>
+
+                <a href="potensi.html">
+                    Potensi
+                </a>
+
+                <a href="galeri.html">
+                    Galeri
+                </a>
+
+                <a href="kontak.html" class="active">
+                    Aduan
+                </a>
+
             </div>
 
         </div>
     </nav>
 
 
-    <!-- PAGE HERO -->
+
+    <!-- ================= PAGE HERO ================= -->
+
     <header class="page-hero">
+
         <div class="container">
-            <span class="eyebrow">HUBUNGI KAMI</span>
+
+            <span class="eyebrow">
+                LAYANAN DESA
+            </span>
 
             <h1>
-                Mari terhubung dengan
+                Aduan Desa
                 <span>Semparuk Kuala</span>
             </h1>
 
             <p>
-                Punya pertanyaan, saran, atau ingin mengetahui lebih
-                banyak tentang Semparuk Kuala? Sampaikan melalui kontak
-                yang tersedia di bawah ini.
+                Sampaikan aduan, keluhan, pertanyaan, atau masukan
+                mengenai pelayanan dan kondisi Desa Semparuk Kuala
+                melalui formulir berikut.
             </p>
+
         </div>
+
     </header>
 
 
-    <!-- CONTACT SECTION -->
+
+    <!-- ================= FORM PENGADUAN ================= -->
+
     <main>
 
         <section class="section">
+
             <div class="container">
 
-                <div class="contact-grid">
-
-                    <!-- CONTACT INFORMATION -->
-                    <div class="contact-info">
-
-                        <span class="eyebrow">INFORMASI</span>
-
-                        <h2>
-                            Hubungi kami
-                        </h2>
-
-                        <p>
-                            Silakan gunakan informasi berikut untuk
-                            menghubungi pengelola desa atau kirimkan
-                            pesan melalui formulir yang tersedia.
-                        </p>
+                <div class="aduan-wrapper">
 
 
-                        <div class="contact-list">
+                    <!-- FORM -->
 
-                            <div class="contact-item">
-                                <div class="contact-icon">📍</div>
-
-                                <div>
-                                    <strong>Alamat</strong>
-                                    <p>
-                                        Semparuk Kuala, Kalimantan Barat
-                                    </p>
-                                </div>
-                            </div>
-
-
-                            <div class="contact-item">
-                                <div class="contact-icon">✉️</div>
-
-                                <div>
-                                    <strong>Email</strong>
-                                    <p>
-                                        emaildesa@example.com
-                                    </p>
-                                </div>
-                            </div>
-
-
-                            <div class="contact-item">
-                                <div class="contact-icon">📞</div>
-
-                                <div>
-                                    <strong>Telepon</strong>
-                                    <p>
-                                        +62 8xx-xxxx-xxxx
-                                    </p>
-                                </div>
-                            </div>
-
-
-                            <div class="contact-item">
-                                <div class="contact-icon">◎</div>
-
-                                <div>
-                                    <strong>Media Sosial</strong>
-                                    <p>
-                                        Instagram / Facebook Desa
-                                    </p>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- CONTACT FORM -->
                     <div class="contact-card">
 
-                        <span class="eyebrow">SARAN & PESAN</span>
+                        <span class="eyebrow">
+                            FORM PENGADUAN
+                        </span>
 
                         <h2>
-                            Kirim pesan
+                            Sampaikan Aduan
                         </h2>
 
-                        <p>
-                            Sampaikan pertanyaan, saran, kritik,
-                            atau informasi kepada pengelola desa.
+                        <p class="form-description">
+                            Isi data berikut dengan lengkap agar
+                            aduan kamu dapat diterima dan diproses
+                            dengan baik.
                         </p>
 
 
-                        <!-- SUDAH TERHUBUNG KE script.js -->
+                        <!--
+                            FORM INI TETAP MENGGUNAKAN
+                            ID YANG SUDAH TERHUBUNG KE script.js
+                        -->
+
                         <form id="saranForm">
 
+
+                            <!-- NAMA -->
+
                             <div class="form-group">
-                                <label for="nama">Nama</label>
+
+                                <label for="nama">
+                                    Nama
+                                </label>
 
                                 <input
                                     type="text"
                                     id="nama"
-                                    placeholder="Nama kamu"
+                                    placeholder="Masukkan nama"
                                     required
                                 >
+
                             </div>
 
 
+
+                            <!-- EMAIL -->
+
                             <div class="form-group">
-                                <label for="email">Email</label>
+
+                                <label for="email">
+                                    Email
+                                </label>
 
                                 <input
                                     type="email"
                                     id="email"
-                                    placeholder="Email kamu"
+                                    placeholder="Masukkan email"
                                     required
                                 >
+
                             </div>
 
 
-                            <div class="form-group">
-                                <label for="kategori">Kategori</label>
 
-                                <select id="kategori">
-                                    <option value="Saran">Saran</option>
-                                    <option value="Kritik">Kritik</option>
-                                    <option value="Pertanyaan">Pertanyaan</option>
-                                    <option value="Lainnya">Lainnya</option>
+                            <!-- KATEGORI -->
+
+                            <div class="form-group">
+
+                                <label for="kategori">
+                                    Kategori
+                                </label>
+
+                                <select
+                                    id="kategori"
+                                    required
+                                >
+
+                                    <option value="">
+                                        -- Pilih Kategori --
+                                    </option>
+
+                                    <option value="Saran">
+                                        Saran
+                                    </option>
+
+                                    <option value="Kritik">
+                                        Kritik
+                                    </option>
+
+                                    <option value="Pertanyaan">
+                                        Pertanyaan
+                                    </option>
+
+                                    <option value="Pelayanan Desa">
+                                        Pelayanan Desa
+                                    </option>
+
+                                    <option value="Infrastruktur">
+                                        Infrastruktur
+                                    </option>
+
+                                    <option value="Lainnya">
+                                        Lainnya
+                                    </option>
+
                                 </select>
+
                             </div>
 
 
+
+                            <!-- JUDUL ADUAN -->
+
                             <div class="form-group">
-                                <label for="pesan">Pesan</label>
+
+                                <label for="judulAduan">
+                                    Judul Aduan
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="judulAduan"
+                                    placeholder="Contoh: Jalan rusak"
+                                    required
+                                >
+
+                            </div>
+
+
+
+                            <!-- ISI ADUAN -->
+
+                            <div class="form-group">
+
+                                <label for="pesan">
+                                    Isi Aduan
+                                </label>
 
                                 <textarea
                                     id="pesan"
-                                    placeholder="Tulis pesan kamu..."
+                                    rows="6"
+                                    placeholder="Tuliskan aduan kamu..."
                                     required
                                 ></textarea>
+
                             </div>
 
 
-                            <button type="submit" class="btn btn-primary">
-                                Kirim Pesan
+
+                            <!-- TOMBOL -->
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                            >
+                                Kirim Aduan →
                             </button>
 
 
-                            <!-- STATUS DARI script.js -->
+
+                            <!-- STATUS -->
+
                             <p
                                 id="statusPesan"
-                                style="font-size:12px;color:#87938e;margin-top:13px"
+                                class="status-pesan"
                             ></p>
 
                         </form>
 
                     </div>
 
+
+
+                    <!-- ================= CEK PENGADUAN ================= -->
+
+                    <div class="contact-card cek-card">
+
+                        <span class="eyebrow">
+                            CEK PENGADUAN
+                        </span>
+
+                        <h2>
+                            Lacak Aduan Kamu
+                        </h2>
+
+                        <p class="form-description">
+                            Masukkan token yang kamu dapat setelah
+                            mengirim aduan untuk mengetahui status
+                            pengaduan.
+                        </p>
+
+
+                        <form id="cekAduanForm">
+
+                            <div class="form-group">
+
+                                <label for="tokenPengaduan">
+                                    Token Pengaduan
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="tokenPengaduan"
+                                    placeholder="Contoh: ADU-20260917-123456"
+                                >
+
+                            </div>
+
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                            >
+                                Cek Pengaduan →
+                            </button>
+
+                        </form>
+
+
+                        <!-- HASIL CEK NANTI -->
+
+                        <div
+                            id="hasilPengaduan"
+                            class="hasil-pengaduan"
+                        ></div>
+
+                    </div>
+
                 </div>
 
             </div>
+
         </section>
 
 
-        <!-- MAP -->
+
+        <!-- ================= INFORMASI ================= -->
+
         <section class="section section-soft">
+
             <div class="container">
 
                 <div class="section-heading">
-                    <span class="eyebrow">LOKASI</span>
+
+                    <span class="eyebrow">
+                        INFORMASI
+                    </span>
 
                     <h2>
-                        Lokasi Semparuk Kuala
+                        Sampaikan dengan jelas
                     </h2>
 
                     <p>
-                        Informasi lokasi resmi desa dapat ditambahkan
-                        pada bagian ini.
+                        Setiap aduan dan masukan dapat membantu
+                        meningkatkan pelayanan serta perkembangan
+                        Desa Semparuk Kuala.
                     </p>
+
                 </div>
 
 
-                <div class="map-placeholder">
-                    <div>
-                        <span class="map-icon">📍</span>
+                <div class="info-cards">
+
+
+                    <div class="info-card">
+
+                        <div class="info-icon">
+                            📝
+                        </div>
 
                         <h3>
-                            Semparuk Kuala
+                            Isi Aduan
                         </h3>
 
                         <p>
-                            Kalimantan Barat, Indonesia
+                            Tuliskan informasi atau permasalahan
+                            yang ingin kamu sampaikan dengan jelas.
                         </p>
+
                     </div>
+
+
+
+                    <div class="info-card">
+
+                        <div class="info-icon">
+                            🔎
+                        </div>
+
+                        <h3>
+                            Simpan Token
+                        </h3>
+
+                        <p>
+                            Simpan token pengaduan yang diberikan
+                            setelah aduan berhasil dikirim.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="info-card">
+
+                        <div class="info-icon">
+                            🤝
+                        </div>
+
+                        <h3>
+                            Bersama Membangun Desa
+                        </h3>
+
+                        <p>
+                            Saran dan masukan dari masyarakat
+                            menjadi bagian dari perkembangan desa.
+                        </p>
+
+                    </div>
+
                 </div>
 
             </div>
+
         </section>
 
     </main>
 
 
-    <!-- FOOTER -->
+
+    <!-- ================= FOOTER ================= -->
+
     <footer class="footer">
+
         <div class="container">
 
             <div class="footer-content">
 
                 <div>
-                    <strong>Semparuk Kuala</strong>
+
+                    <strong>
+                        Semparuk Kuala
+                    </strong>
 
                     <p>
-                        Website Promosi Desa
+                        Website Promosi dan Informasi Desa
                     </p>
+
                 </div>
 
                 <p>
@@ -284,11 +460,58 @@
             </div>
 
         </div>
+
     </footer>
 
 
-    <!-- SCRIPT GOOGLE SHEETS -->
+
+    <!-- ================= SCRIPT ================= -->
+
     <script src="script.js"></script>
+
+
+    <!--
+        SCRIPT CEK PENGADUAN BELUM DIAKTIFKAN.
+
+        Nanti akan kita sambungkan ke Google Sheet
+        setelah tampilan ini sudah sesuai.
+    -->
+
+    <script>
+
+        const cekAduanForm =
+            document.getElementById("cekAduanForm");
+
+        const hasilPengaduan =
+            document.getElementById("hasilPengaduan");
+
+
+        cekAduanForm.addEventListener("submit", function(e) {
+
+            e.preventDefault();
+
+            const token =
+                document
+                .getElementById("tokenPengaduan")
+                .value
+                .trim();
+
+
+            if (!token) {
+
+                hasilPengaduan.innerHTML =
+                    "<p>Silakan masukkan token pengaduan terlebih dahulu.</p>";
+
+                return;
+            }
+
+
+            hasilPengaduan.innerHTML =
+                "<p>Fitur pengecekan akan segera dihubungkan dengan sistem pengaduan.</p>";
+
+        });
+
+    </script>
 
 </body>
 </html>
