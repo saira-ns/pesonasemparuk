@@ -24,12 +24,16 @@
 
             <!-- LOGO -->
             <div class="login-logo">
-                <div class="login-mark">SK</div>
+
+                <div class="login-mark">
+                    SK
+                </div>
 
                 <div>
                     <strong>WEBSITE DESA</strong>
                     <span>Semparuk Kuala</span>
                 </div>
+
             </div>
 
 
@@ -92,6 +96,7 @@
                 <button
                     type="submit"
                     class="login-button"
+                    id="loginButton"
                 >
                     Masuk ke Admin
                     <span>→</span>
@@ -122,9 +127,18 @@
     <!-- LOGIN SCRIPT -->
     <script>
 
-        const SCRIPT_URL =
-        "https://script.google.com/macros/s/AKfycby2SshHN0YTUdKkvCnsULps6WO3jkhNK8LHqG2dEwd4xGqXHVGG_J0XFob5pUgkycSd/exec";
+        /* =========================================
+           GOOGLE APPS SCRIPT
+           URL DEPLOYMENT TERBARU
+        ========================================= */
 
+        const SCRIPT_URL =
+        "https://script.google.com/macros/s/AKfycbwiFekXNS2naIya8pPjoScS424VBe4sZxllf2VEU3-un4UshPAyrZED2afYIEV-idjJ/exec";
+
+
+        /* =========================================
+           ELEMENT
+        ========================================= */
 
         const loginForm =
         document.getElementById("loginForm");
@@ -132,6 +146,13 @@
         const loginStatus =
         document.getElementById("loginStatus");
 
+        const loginButton =
+        document.getElementById("loginButton");
+
+
+        /* =========================================
+           PROSES LOGIN
+        ========================================= */
 
         loginForm.addEventListener(
             "submit",
@@ -152,6 +173,10 @@
                 .trim();
 
 
+                /* ---------------------------------
+                   VALIDASI
+                --------------------------------- */
+
                 if(!username || !password){
 
                     loginStatus.textContent =
@@ -165,12 +190,26 @@
                 }
 
 
+                /* ---------------------------------
+                   TAMPILAN LOADING
+                --------------------------------- */
+
                 loginStatus.textContent =
                 "Memeriksa login...";
 
                 loginStatus.className =
                 "login-status";
 
+
+                loginButton.disabled = true;
+
+                loginButton.innerHTML =
+                'Memeriksa... <span>⏳</span>';
+
+
+                /* ---------------------------------
+                   DATA LOGIN
+                --------------------------------- */
 
                 const data =
                 new URLSearchParams();
@@ -194,12 +233,11 @@
                 );
 
 
-                try{
+                /* ---------------------------------
+                   KIRIM KE APPS SCRIPT
+                --------------------------------- */
 
-                    /*
-                     * Login dilakukan melalui
-                     * Google Apps Script.
-                     */
+                try{
 
                     const response =
                     await fetch(
@@ -215,12 +253,11 @@
                     await response.json();
 
 
-                    if(result.success){
+                    /* ---------------------------------
+                       LOGIN BERHASIL
+                    --------------------------------- */
 
-                        /*
-                         * Simpan status login
-                         * di browser.
-                         */
+                    if(result.success){
 
                         sessionStorage.setItem(
                             "adminLogin",
@@ -242,6 +279,10 @@
                         "login-status success";
 
 
+                        loginButton.innerHTML =
+                        'Berhasil <span>✓</span>';
+
+
                         setTimeout(
                             function(){
 
@@ -253,7 +294,14 @@
                         );
 
 
-                    }else{
+                    }
+
+
+                    /* ---------------------------------
+                       LOGIN GAGAL
+                    --------------------------------- */
+
+                    else{
 
                         loginStatus.textContent =
                         result.message ||
@@ -262,12 +310,28 @@
                         loginStatus.className =
                         "login-status error";
 
+
+                        loginButton.disabled = false;
+
+                        loginButton.innerHTML =
+                        'Masuk ke Admin <span>→</span>';
+
                     }
 
 
-                }catch(error){
+                }
 
-                    console.error(error);
+
+                /* ---------------------------------
+                   ERROR KONEKSI
+                --------------------------------- */
+
+                catch(error){
+
+                    console.error(
+                        "Login error:",
+                        error
+                    );
 
 
                     loginStatus.textContent =
@@ -275,6 +339,12 @@
 
                     loginStatus.className =
                     "login-status error";
+
+
+                    loginButton.disabled = false;
+
+                    loginButton.innerHTML =
+                    'Masuk ke Admin <span>→</span>';
 
                 }
 
