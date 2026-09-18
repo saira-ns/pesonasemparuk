@@ -4,7 +4,7 @@
 // =====================================================
 
 const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycby2SshHN0YTUdKkvCnsULps6WO3jkhNK8LHqG2dEwd4xGqXHVGG_J0XFob5pUgkycSd/exec";
+"https://script.google.com/macros/s/AKfycbyPB0o6uoS_AK0VI01wySdgXW8JcBAwqpUlMcpKZTPSrpMHXiz6k0tQaKuLqBnZj4CR3A/exec";
 
 
 // =====================================================
@@ -29,16 +29,21 @@ if (form) {
         const kategori =
             document.getElementById("kategori").value;
 
+        const judulAduan =
+            document.getElementById("judulAduan").value.trim();
+
         const pesan =
             document.getElementById("pesan").value.trim();
 
 
         // Validasi
-        if (!nama || !email || !pesan) {
+        if (!nama || !email || !kategori || !judulAduan || !pesan) {
 
-            alert(
-                "Nama, email, dan pesan wajib diisi ya 😊"
-            );
+            if (statusPesan) {
+                statusPesan.textContent =
+                    "Nama, email, kategori, judul aduan, dan isi aduan wajib diisi.";
+                statusPesan.style.color = "#b04a4a";
+            }
 
             return;
         }
@@ -47,7 +52,7 @@ if (form) {
         if (statusPesan) {
 
             statusPesan.textContent =
-                "Mengirim pesan...";
+                "Mengirim aduan...";
 
             statusPesan.style.color =
                 "#66736d";
@@ -61,43 +66,46 @@ if (form) {
         data.append("nama", nama);
         data.append("email", email);
         data.append("kategori", kategori);
-
-        // Untuk sementara isi pesan digunakan
-        // sebagai judul + isi agar tetap cocok
-        // dengan form kontak kamu.
-        data.append("judul", kategori);
-        data.append("isi", pesan);
+        data.append("judulAduan", judulAduan);
+        data.append("pesan", pesan);
 
 
         try {
 
-            await fetch(SCRIPT_URL, {
+            const response = await fetch(SCRIPT_URL, {
 
                 method: "POST",
-
-                body: data,
-
-                mode: "no-cors"
+                body: data
 
             });
 
 
-            // Karena no-cors tidak memberikan
-            // response JSON yang bisa dibaca browser,
-            // kita tampilkan pemberitahuan umum.
+            const result = await response.json();
 
+
+            if (!result.success) {
+
+                throw new Error(
+                    result.message || "Aduan gagal dikirim."
+                );
+
+            }
+
+
+            // Reset form
             form.reset();
 
 
-            alert(
-                "Pesan berhasil dikirim! 😊"
-            );
-
-
+            // Tampilkan token pengaduan
             if (statusPesan) {
 
-                statusPesan.textContent =
-                    "✓ Pesan kamu sudah dikirim ke pengelola desa.";
+                statusPesan.innerHTML =
+                    "✓ Aduan berhasil dikirim!<br>" +
+                    "Simpan token pengaduan kamu:<br>" +
+                    "<strong style='font-size:18px;'>" +
+                    escapeHTML(result.token) +
+                    "</strong><br>" +
+                    "<small>Gunakan token ini untuk mengecek status aduan.</small>";
 
                 statusPesan.style.color =
                     "#24664e";
@@ -112,15 +120,10 @@ if (form) {
             );
 
 
-            alert(
-                "Pesan gagal dikirim. Silakan coba lagi."
-            );
-
-
             if (statusPesan) {
 
                 statusPesan.textContent =
-                    "Pesan gagal dikirim. Silakan coba lagi.";
+                    "Aduan gagal dikirim. Silakan coba lagi.";
 
                 statusPesan.style.color =
                     "#b04a4a";
@@ -136,21 +139,12 @@ if (form) {
 // =====================================================
 // CEK PENGADUAN BERDASARKAN TOKEN
 // =====================================================
-//
-// Bagian ini otomatis aktif apabila nanti
-// kontak.html mempunyai:
-//
-// id="cekForm"
-// id="tokenCek"
-// id="hasilPengaduan"
-//
-// =====================================================
 
 const cekForm =
-    document.getElementById("cekForm");
+    document.getElementById("cekAduanForm");
 
 const tokenCek =
-    document.getElementById("tokenCek");
+    document.getElementById("tokenPengaduan");
 
 const hasilPengaduan =
     document.getElementById("hasilPengaduan");
@@ -171,9 +165,11 @@ if (cekForm) {
 
             if (!token) {
 
-                alert(
-                    "Masukkan token pengaduan terlebih dahulu."
-                );
+                hasilPengaduan.innerHTML =
+                    "<strong>Masukkan token pengaduan terlebih dahulu.</strong>";
+
+                hasilPengaduan.style.display =
+                    "block";
 
                 return;
             }
@@ -204,7 +200,9 @@ if (cekForm) {
 
                     hasilPengaduan.innerHTML =
                         "<strong>Pengaduan tidak ditemukan.</strong><br>" +
-                        (result.message || "");
+                        escapeHTML(
+                            result.message || ""
+                        );
 
                     return;
                 }
@@ -258,7 +256,9 @@ if (cekForm) {
 
                         <div>
                             <strong>Balasan Admin</strong><br>
-                            ${escapeHTML(data.balasan)}
+                            ${escapeHTML(
+                                data.balasan || "Belum ada balasan."
+                            )}
                         </div>
 
                     </div>
@@ -291,8 +291,10 @@ if (cekForm) {
 
 function escapeHTML(value) {
 
-    if (value === null ||
-        value === undefined) {
+    if (
+        value === null ||
+        value === undefined
+    ) {
 
         return "";
 
