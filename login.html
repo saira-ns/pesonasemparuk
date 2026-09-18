@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,70 +10,50 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 
-
 <body class="login-page">
 
-    <main class="login-container">
+    <main class="login-wrapper">
 
         <div class="login-card">
 
-
-            <!-- =========================
-                 LOGO
-            ========================== -->
-
+            <!-- LOGO -->
             <div class="login-logo">
-
-                <div class="login-mark">
-                    SK
-                </div>
+                <div class="login-mark">SK</div>
 
                 <div>
                     <strong>WEBSITE DESA</strong>
                     <span>Semparuk Kuala</span>
                 </div>
-
             </div>
 
 
-            <!-- =========================
-                 JUDUL
-            ========================== -->
-
+            <!-- JUDUL -->
             <div class="login-heading">
 
-                <span class="login-eyebrow">
-                    AREA ADMIN
+                <span class="eyebrow">
+                    ADMINISTRATOR
                 </span>
 
                 <h1>
-                    Selamat datang kembali
+                    Login Admin
                 </h1>
 
                 <p>
-                    Silakan masuk untuk mengelola pengaduan
-                    masyarakat Semparuk Kuala.
+                    Masuk untuk mengelola pengaduan
+                    dan pesan masyarakat.
                 </p>
 
             </div>
 
 
-            <!-- =========================
-                 FORM LOGIN
-            ========================== -->
-
+            <!-- FORM LOGIN -->
             <form id="loginForm">
-
-
-                <!-- USERNAME -->
 
                 <div class="login-form-group">
 
@@ -93,217 +72,209 @@
                 </div>
 
 
-                <!-- PASSWORD -->
-
                 <div class="login-form-group">
 
                     <label for="password">
                         Password
                     </label>
 
-                    <div class="password-wrapper">
-
-                        <input
-                            type="password"
-                            id="password"
-                            placeholder="Masukkan password"
-                            autocomplete="current-password"
-                            required
-                        >
-
-                        <button
-                            type="button"
-                            id="togglePassword"
-                            class="show-password"
-                        >
-                            Lihat
-                        </button>
-
-                    </div>
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Masukkan password"
+                        autocomplete="current-password"
+                        required
+                    >
 
                 </div>
 
-
-                <!-- TOMBOL LOGIN -->
 
                 <button
                     type="submit"
                     class="login-button"
                 >
-
                     Masuk ke Admin
-
                     <span>→</span>
-
                 </button>
 
-
-                <!-- STATUS LOGIN -->
 
                 <p
                     id="loginStatus"
                     class="login-status"
                 ></p>
 
-
             </form>
 
 
-            <!-- KEMBALI KE WEBSITE -->
-
+            <!-- KEMBALI -->
             <a
                 href="index.html"
                 class="back-home"
             >
-                ← Kembali ke Website
+                ← Kembali ke website
             </a>
 
-
         </div>
-
-
-        <!-- FOOTER -->
-
-        <p class="login-footer">
-            © 2026 Semparuk Kuala
-        </p>
-
 
     </main>
 
 
-
-    <!-- =========================
-         SCRIPT LOGIN
-    ========================== -->
-
+    <!-- LOGIN SCRIPT -->
     <script>
 
-        /* Ambil elemen */
+        const SCRIPT_URL =
+        "https://script.google.com/macros/s/AKfycby2SshHN0YTUdKkvCnsULps6WO3jkhNK8LHqG2dEwd4xGqXHVGG_J0XFob5pUgkycSd/exec";
+
 
         const loginForm =
-            document.getElementById("loginForm");
-
-        const username =
-            document.getElementById("username");
-
-        const password =
-            document.getElementById("password");
+        document.getElementById("loginForm");
 
         const loginStatus =
-            document.getElementById("loginStatus");
+        document.getElementById("loginStatus");
 
-        const togglePassword =
-            document.getElementById("togglePassword");
-
-
-
-        /* =========================
-           LIHAT / SEMBUNYIKAN PASSWORD
-        ========================== */
-
-        togglePassword.addEventListener(
-            "click",
-            function () {
-
-                if (password.type === "password") {
-
-                    password.type = "text";
-
-                    togglePassword.textContent =
-                        "Sembunyikan";
-
-                } else {
-
-                    password.type = "password";
-
-                    togglePassword.textContent =
-                        "Lihat";
-
-                }
-
-            }
-        );
-
-
-
-        /* =========================
-           PROSES LOGIN
-        ========================== */
 
         loginForm.addEventListener(
             "submit",
-            function (e) {
+            async function(e){
 
                 e.preventDefault();
 
 
-                const user =
-                    username.value.trim();
-
-                const pass =
-                    password.value.trim();
-
+                const username =
+                document.getElementById("username")
+                .value
+                .trim();
 
 
-                /* Validasi */
+                const password =
+                document.getElementById("password")
+                .value
+                .trim();
 
-                if (!user || !pass) {
+
+                if(!username || !password){
 
                     loginStatus.textContent =
-                        "Username dan password wajib diisi.";
+                    "Username dan password wajib diisi.";
 
                     loginStatus.className =
-                        "login-status error";
+                    "login-status error";
 
                     return;
 
                 }
 
 
+                loginStatus.textContent =
+                "Memeriksa login...";
 
-                /* =========================
-                   USERNAME & PASSWORD ADMIN
-                ========================== */
-
-                if (
-                    user === "ADMIN" &&
-                    pass === "saira"
-                ) {
+                loginStatus.className =
+                "login-status";
 
 
-                    loginStatus.textContent =
-                        "Login berhasil. Membuka halaman admin...";
-
-                    loginStatus.className =
-                        "login-status success";
+                const data =
+                new URLSearchParams();
 
 
+                data.append(
+                    "action",
+                    "login"
+                );
 
-                    /* Masuk ke halaman admin */
 
-                    setTimeout(
-                        function () {
+                data.append(
+                    "username",
+                    username
+                );
 
-                            window.location.href =
-                                "admin.html";
 
-                        },
-                        700
+                data.append(
+                    "password",
+                    password
+                );
+
+
+                try{
+
+                    /*
+                     * Login dilakukan melalui
+                     * Google Apps Script.
+                     */
+
+                    const response =
+                    await fetch(
+                        SCRIPT_URL,
+                        {
+                            method:"POST",
+                            body:data
+                        }
                     );
 
 
-                } else {
+                    const result =
+                    await response.json();
 
 
-                    /* Login gagal */
+                    if(result.success){
 
-                    loginStatus.textContent =
+                        /*
+                         * Simpan status login
+                         * di browser.
+                         */
+
+                        sessionStorage.setItem(
+                            "adminLogin",
+                            "true"
+                        );
+
+
+                        sessionStorage.setItem(
+                            "adminUsername",
+                            username
+                        );
+
+
+                        loginStatus.textContent =
+                        "Login berhasil. Membuka admin...";
+
+
+                        loginStatus.className =
+                        "login-status success";
+
+
+                        setTimeout(
+                            function(){
+
+                                window.location.href =
+                                "admin.html";
+
+                            },
+                            700
+                        );
+
+
+                    }else{
+
+                        loginStatus.textContent =
+                        result.message ||
                         "Username atau password salah.";
 
-                    loginStatus.className =
+                        loginStatus.className =
                         "login-status error";
 
+                    }
+
+
+                }catch(error){
+
+                    console.error(error);
+
+
+                    loginStatus.textContent =
+                    "Terjadi kesalahan koneksi. Coba lagi.";
+
+                    loginStatus.className =
+                    "login-status error";
 
                 }
 
@@ -313,5 +284,4 @@
     </script>
 
 </body>
-
 </html>
