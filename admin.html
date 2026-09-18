@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin — Semparuk Kuala</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS utama -->
+    <link rel="stylesheet" href="gaya.css">
+
+    <style>
+
+        /* =========================================
+           ADMIN DASHBOARD
+        ========================================= */
+
+        .admin-page{
+            min-height:100vh;
+            background:var(--cream);
+        }
+
+        .admin-header{
+            background:var(--mint);
+            border-bottom:1px solid rgba(23,75,58,.08);
+            padding:65px 0 55px;
+        }
+
+        .admin-header h1{
+            font-family:'Playfair Display',serif;
+            color:var(--green);
+            font-size:clamp(40px,6vw,58px);
+            margin:10px 0;
+        }
+
+        .admin-header p{
+            color:var(--muted);
+            max-width:650px;
+        }
+
+        .admin-actions{
+            margin-top:25px;
+            display:flex;
+            gap:10px;
+            flex-wrap:wrap;
+        }
+
+        .admin-btn{
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            min-height:44px;
+            padding:11px 17px;
+            border-radius:12px;
+            border:none;
+            background:var(--green);
+            color:#fff;
+            font-family:'DM Sans',sans-serif;
+            font-size:13px;
+            font-weight:700;
+            cursor:pointer;
+            transition:.2s ease;
+        }
+
+        .admin-btn:hover{
+            background:var(--green-2);
+            transform:translateY(-1px);
+        }
+
+        .admin-btn.secondary{
+            background:#fff;
+            color:var(--green);
+            border:1px solid var(--line);
+        }
+
+        .admin-btn.secondary:hover{
+            background:var(--mint);
+        }
+
+
+        /* =========================================
+           STATISTIK
+        ========================================= */
+
+        .admin-stats{
+            display:grid;
+            grid-template-columns:repeat(4,1fr);
+            gap:18px;
+            margin-bottom:30px;
+        }
+
+        .admin-stat{
+            background:#fff;
+            border:1px solid rgba(23,75,58,.08);
+            border-radius:20px;
+            padding:23px;
+            box-shadow:0 10px 30px rgba(23,75,58,.06);
+        }
+
+        .admin-stat span{
+            display:block;
+            color:var(--muted);
+            font-size:13px;
+            margin-bottom:7px;
+        }
+
+        .admin-stat strong{
+            display:block;
+            color:var(--green);
+            font-size:30px;
+        }
+
+
+        /* =========================================
+           PANEL
+        ========================================= */
+
+        .admin-panel{
+            background:#fff;
+            border:1px solid rgba(23,75,58,.08);
+            border-radius:24px;
+            box-shadow:var(--shadow);
+            overflow:hidden;
+        }
+
+        .admin-panel-header{
+            padding:25px 28px;
+            border-bottom:1px solid #edf0ed;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:20px;
+            flex-wrap:wrap;
+        }
+
+        .admin-panel-header h2{
+            font-family:'Playfair Display',serif;
+            color:var(--green);
+            font-size:30px;
+        }
+
+        .admin-panel-header p{
+            color:var(--muted);
+            font-size:13px;
+            margin-top:3px;
+        }
+
+
+        /* =========================================
+           SEARCH
+        ========================================= */
+
+        .admin-search{
+            width:280px;
+            max-width:100%;
+        }
+
+        .admin-search input{
+            width:100%;
+            min-height:43px;
+            padding:11px 13px;
+            border:1px solid var(--line);
+            border-radius:12px;
+            background:#fbfcfa;
+            outline:none;
+            font-family:'DM Sans',sans-serif;
+            font-size:13px;
+        }
+
+        .admin-search input:focus{
+            border-color:var(--green-2);
+            box-shadow:0 0 0 3px rgba(36,102,78,.09);
+        }
+
+
+        /* =========================================
+           TABLE
+        ========================================= */
+
+        .table-wrapper{
+            width:100%;
+            overflow-x:auto;
+        }
+
+        .aduan-table{
+            width:100%;
+            min-width:1100px;
+            border-collapse:collapse;
+        }
+
+        .aduan-table th{
+            background:#f5f8f5;
+            color:var(--green);
+            font-size:12px;
+            font-weight:700;
+            text-align:left;
+            padding:15px 16px;
+            white-space:nowrap;
+            border-bottom:1px solid var(--line);
+        }
+
+        .aduan-table td{
+            padding:17px 16px;
+            border-bottom:1px solid #edf0ed;
+            color:#53615b;
+            font-size:13px;
+            vertical-align:top;
+        }
+
+        .aduan-table tbody tr:hover{
+            background:#fbfdfb;
+        }
+
+        .nama-cell strong{
+            display:block;
+            color:var(--green);
+            margin-bottom:3px;
+        }
+
+        .nama-cell span{
+            color:#87938e;
+            font-size:12px;
+        }
+
+        .judul-cell{
+            color:var(--dark);
+            font-weight:700;
+        }
+
+        .isi-cell{
+            max-width:260px;
+            line-height:1.6;
+        }
+
+        .token{
+            display:inline-block;
+            padding:5px 8px;
+            border-radius:8px;
+            background:var(--mint);
+            color:var(--green);
+            font-size:11px;
+            font-weight:700;
+            white-space:nowrap;
+        }
+
+
+        /* =========================================
+           STATUS
+        ========================================= */
+
+        .status-badge{
+            display:inline-block;
+            padding:6px 10px;
+            border-radius:20px;
+            font-size:11px;
+            font-weight:700;
+            white-space:nowrap;
+        }
+
+        .status-baru{
+            background:#fff4d9;
+            color:#916b20;
+        }
+
+        .status-diproses{
+            background:#e7f0ff;
+            color:#3d6190;
+        }
+
+        .status-selesai{
+            background:#e4f4eb;
+            color:#287052;
+        }
+
+
+        /* =========================================
+           BALASAN
+        ========================================= */
+
+        .balasan-cell{
+            min-width:220px;
+        }
+
+        .balasan-text{
+            color:#66736d;
+            font-size:12px;
+            line-height:1.6;
+        }
+
+        .balasan-kosong{
+            color:#a0aaa5;
+            font-style:italic;
+        }
+
+        .admin-reply-btn{
+            margin-top:9px;
+            padding:7px 10px;
+            border:none;
+            border-radius:9px;
+            background:var(--green);
+            color:#fff;
+            font-family:'DM Sans',sans-serif;
+            font-size:11px;
+            font-weight:700;
+            cursor:pointer;
+        }
+
+        .admin-reply-btn:hover{
+            background:var(--green-2);
+        }
+
+
+        /* =========================================
+           EMPTY / LOADING
+        ========================================= */
+
+        .table-message{
+            padding:55px 25px;
+            text-align:center;
+            color:var(--muted);
+        }
+
+        .table-message strong{
+            display:block;
+            color:var(--green);
+            font-size:17px;
+            margin-bottom:5px;
+        }
+
+
+        /* =========================================
+           MODAL BALASAN
+        ========================================= */
+
+        .modal{
+            display:none;
+            position:fixed;
+            inset:0;
+            z-index:100;
+            background:rgba(10,35,27,.55);
+            padding:20px;
+            align-items:center;
+            justify-content:center;
+        }
+
+        .modal.show{
+            display:flex;
+        }
+
+        .modal-box{
+            width:min(560px,100%);
+            background:#fff;
+            border-radius:24px;
+            padding:30px;
+            box-shadow:0 25px 70px rgba(0,0,0,.18);
+        }
+
+        .modal-box h2{
+            font-family:'Playfair Display',serif;
+            color:var(--green);
+            font-size:30px;
+            margin-bottom:7px;
+        }
+
+        .modal-info{
+            color:var(--muted);
+            font-size:13px;
+            margin-bottom:22px;
+        }
+
+        .modal-box label{
+            display:block;
+            color:var(--green);
+            font-size:13px;
+            font-weight:700;
+            margin-bottom:8px;
+        }
+
+        .modal-box select,
+        .modal-box textarea{
+            width:100%;
+            border:1px solid var(--line);
+            border-radius:12px;
+            padding:12px 13px;
+            background:#fbfcfa;
+            font-family:'DM Sans',sans-serif;
+            font-size:13px;
+            outline:none;
+            margin-bottom:17px;
+        }
+
+        .modal-box select{
+            min-height:45px;
+        }
+
+        .modal-box textarea{
+            min-height:130px;
+            resize:vertical;
+        }
+
+        .modal-box select:focus,
+        .modal-box textarea:focus{
+            border-color:var(--green-2);
+            box-shadow:0 0 0 3px rgba(36,102,78,.09);
+        }
+
+        .modal-actions{
+            display:flex;
+            justify-content:flex-end;
+            gap:10px;
+            flex-wrap:wrap;
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media(max-width:800px){
+
+            .admin-stats{
+                grid-template-columns:1fr 1fr;
+            }
+
+            .admin-header{
+                padding:55px 0 45px;
+            }
+
+            .admin-panel-header{
+                padding:22px;
+            }
+
+        }
+
+        @media(max-width:520px){
+
+            .admin-stats{
+                grid-template-columns:1fr 1fr;
+                gap:10px;
+            }
+
+            .admin-stat{
+                padding:17px;
+            }
+
+            .admin-stat strong{
+                font-size:25px;
+            }
+
+            .admin-panel{
+                border-radius:20px;
+            }
+
+            .admin-panel-header h2{
+                font-size:27px;
+            }
+
+            .admin-search{
+                width:100%;
+            }
+
+            .modal-box{
+                padding:24px 20px;
+                border-radius:20px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<div class="admin-page">
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <nav class="navbar">
+
+        <div class="nav-container">
+
+            <a href="index.html" class="brand">
+
+                <span class="brand-mark">
+                    SK
+                </span>
+
+                <span class="brand-text">
+                    <strong>WEBSITE DESA</strong>
+                    <small>Semparuk Kuala</small>
+                </span>
+
+            </a>
+
+
+            <div class="nav-menu">
+
+                <a href="index.html">
+                    Beranda
+                </a>
+
+                <a href="tentang.html">
+                    Tentang
+                </a>
+
+                <a href="potensi.html">
+                    Potensi
+                </a>
+
+                <a href="galeri.html">
+                    Galeri
+                </a>
+
+                <a href="kontak.html">
+                    Aduan
+                </a>
+
+                <a href="login.html">
+                    Keluar
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="admin-header">
+
+        <div class="container">
+
+            <span class="eyebrow">
+                ADMINISTRATOR
+            </span>
+
+            <h1>
+                Dashboard Pengaduan
+            </h1>
+
+            <p>
+                Kelola pengaduan masyarakat Desa Semparuk Kuala,
+                periksa status pengaduan, dan berikan balasan
+                kepada masyarakat.
+            </p>
+
+
+            <div class="admin-actions">
+
+                <button
+                    type="button"
+                    class="admin-btn"
+                    onclick="muatData()"
+                >
+                    ↻ Muat Data
+                </button>
+
+                <a
+                    href="kontak.html"
+                    class="admin-btn secondary"
+                >
+                    ← Lihat Halaman Aduan
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         CONTENT
+    ========================== -->
+
+    <main>
+
+        <section class="section">
+
+            <div class="container">
+
+
+                <!-- STATISTIK -->
+
+                <div class="admin-stats">
+
+                    <div class="admin-stat">
+                        <span>Total Pengaduan</span>
+                        <strong id="totalAduan">0</strong>
+                    </div>
+
+                    <div class="admin-stat">
+                        <span>Pengaduan Baru</span>
+                        <strong id="totalBaru">0</strong>
+                    </div>
+
+                    <div class="admin-stat">
+                        <span>Sedang Diproses</span>
+                        <strong id="totalProses">0</strong>
+                    </div>
+
+                    <div class="admin-stat">
+                        <span>Selesai</span>
+                        <strong id="totalSelesai">0</strong>
+                    </div>
+
+                </div>
+
+
+                <!-- PANEL DATA -->
+
+                <div class="admin-panel">
+
+                    <div class="admin-panel-header">
+
+                        <div>
+
+                            <span class="eyebrow">
+                                DATA MASYARAKAT
+                            </span>
+
+                            <h2>
+                                Daftar Pengaduan
+                            </h2>
+
+                            <p>
+                                Data pengaduan yang tersimpan
+                                di Google Sheets.
+                            </p>
+
+                        </div>
+
+
+                        <div class="admin-search">
+
+                            <input
+                                type="search"
+                                id="searchAduan"
+                                placeholder="Cari nama, token, atau judul..."
+                                oninput="filterAduan()"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TABLE -->
+
+                    <div class="table-wrapper">
+
+                        <table class="aduan-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        No
+                                    </th>
+
+                                    <th>
+                                        Tanggal
+                                    </th>
+
+                                    <th>
+                                        Token
+                                    </th>
+
+                                    <th>
+                                        Masyarakat
+                                    </th>
+
+                                    <th>
+                                        Kategori
+                                    </th>
+
+                                    <th>
+                                        Judul Aduan
+                                    </th>
+
+                                    <th>
+                                        Isi Aduan
+                                    </th>
+
+                                    <th>
+                                        Status
+                                    </th>
+
+                                    <th>
+                                        Balasan Admin
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="tabelAduan">
+
+                                <tr>
+
+                                    <td
+                                        colspan="9"
+                                        class="table-message"
+                                    >
+
+                                        <strong>
+                                            Memuat data...
+                                        </strong>
+
+                                        Silakan tunggu sebentar.
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="footer">
+
+        <div class="footer-content">
+
+            <div>
+
+                <strong>
+                    Semparuk Kuala
+                </strong>
+
+                <p>
+                    Panel Administrator Website Desa
+                </p>
+
+            </div>
+
+
+            <p>
+                © 2026 Semparuk Kuala
+            </p>
+
+        </div>
+
+    </footer>
+
+</div>
+
+
+<!-- =========================
+     MODAL BALASAN
+========================== -->
+
+<div
+    class="modal"
+    id="modalBalasan"
+>
+
+    <div class="modal-box">
+
+        <h2>
+            Balas Pengaduan
+        </h2>
+
+        <p
+            class="modal-info"
+            id="modalInfo"
+        >
+            Token pengaduan
+        </p>
+
+
+        <label for="modalStatus">
+            Status Pengaduan
+        </label>
+
+        <select id="modalStatus">
+
+            <option value="Baru">
+                Baru
+            </option>
+
+            <option value="Diproses">
+                Diproses
+            </option>
+
+            <option value="Selesai">
+                Selesai
+            </option>
+
+        </select>
+
+
+        <label for="modalBalasan">
+            Balasan Admin
+        </label>
+
+        <textarea
+            id="modalBalasan"
+            placeholder="Tulis balasan untuk masyarakat..."
+        ></textarea>
+
+
+        <div class="modal-actions">
+
+            <button
+                type="button"
+                class="admin-btn secondary"
+                onclick="tutupModal()"
+            >
+                Batal
+            </button>
+
+            <button
+                type="button"
+                class="admin-btn"
+                onclick="simpanBalasan()"
+            >
+                Simpan Balasan
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    /* =========================================
+       GOOGLE APPS SCRIPT
+    ========================================= */
+
+    const SCRIPT_URL =
+        "https://script.google.com/macros/s/AKfycby2SshHN0YTUdKkvCnsULps6WO3jkhNK8LHqG2dEwd4xGqXHVGG_J0XFob5pUgkycSd/exec";
+
+
+    /* =========================================
+       DATA
+    ========================================= */
+
+    let semuaAduan = [];
+
+    let aduanDipilih = null;
+
+
+    /* =========================================
+       MUAT DATA
+    ========================================= */
+
+    async function muatData(){
+
+        const tabel =
+            document.getElementById("tabelAduan");
+
+        tabel.innerHTML = `
+            <tr>
+                <td colspan="9" class="table-message">
+                    <strong>Memuat data...</strong>
+                    Mengambil data pengaduan dari Google Sheets.
+                </td>
+            </tr>
+        `;
+
+
+        try{
+
+            const response =
+                await fetch(
+                    SCRIPT_URL + "?action=getAduan",
+                    {
+                        method:"GET"
+                    }
+                );
+
+
+            const data =
+                await response.json();
+
+
+            if(!data || !data.success){
+
+                throw new Error(
+                    data?.message ||
+                    "Data tidak dapat diambil."
+                );
+
+            }
+
+
+            semuaAduan =
+                Array.isArray(data.data)
+                ? data.data
+                : [];
+
+
+            tampilkanAduan(semuaAduan);
+
+            updateStatistik(semuaAduan);
+
+
+        }catch(error){
+
+            console.error(error);
+
+            tabel.innerHTML = `
+                <tr>
+                    <td colspan="9" class="table-message">
+                        <strong>Data belum dapat dimuat</strong>
+                        Pastikan Apps Script sudah memiliki fungsi
+                        untuk membaca data pengaduan.
+                    </td>
+                </tr>
+            `;
+
+        }
+
+    }
+
+
+    /* =========================================
+       TAMPILKAN DATA
+    ========================================= */
+
+    function tampilkanAduan(data){
+
+        const tabel =
+            document.getElementById("tabelAduan");
+
+
+        if(!data.length){
+
+            tabel.innerHTML = `
+                <tr>
+                    <td colspan="9" class="table-message">
+                        <strong>Belum ada pengaduan</strong>
+                        Pengaduan masyarakat akan muncul di sini.
+                    </td>
+                </tr>
+            `;
+
+            return;
+        }
+
+
+        tabel.innerHTML =
+            data.map((aduan,index)=>{
+
+                const status =
+                    aduan.status ||
+                    "Baru";
+
+
+                const statusClass =
+                    status.toLowerCase()
+                    .replace(/\s/g,"-");
+
+
+                return `
+
+                    <tr>
+
+                        <td>
+                            ${escapeHTML(
+                                aduan.no || index + 1
+                            )}
+                        </td>
+
+
+                        <td>
+                            ${escapeHTML(
+                                aduan.tanggal || "-"
+                            )}
+                        </td>
+
+
+                        <td>
+
+                            <span class="token">
+
+                                ${escapeHTML(
+                                    aduan.token || "-"
+                                )}
+
+                            </span>
+
+                        </td>
+
+
+                        <td class="nama-cell">
+
+                            <strong>
+                                ${escapeHTML(
+                                    aduan.nama || "-"
+                                )}
+                            </strong>
+
+                            <span>
+                                ${escapeHTML(
+                                    aduan.email || "-"
+                                )}
+                            </span>
+
+                        </td>
+
+
+                        <td>
+                            ${escapeHTML(
+                                aduan.kategori || "-"
+                            )}
+                        </td>
+
+
+                        <td class="judul-cell">
+
+                            ${escapeHTML(
+                                aduan.judul || "-"
+                            )}
+
+                        </td>
+
+
+                        <td class="isi-cell">
+
+                            ${escapeHTML(
+                                aduan.isi || "-"
+                            )}
+
+                        </td>
+
+
+                        <td>
+
+                            <span
+                                class="status-badge status-${statusClass}"
+                            >
+
+                                ${escapeHTML(status)}
+
+                            </span>
+
+                        </td>
+
+
+                        <td class="balasan-cell">
+
+                            ${
+                                aduan.balasan
+                                ?
+                                `
+                                <div class="balasan-text">
+                                    ${escapeHTML(
+                                        aduan.balasan
+                                    )}
+                                </div>
+                                `
+                                :
+                                `
+                                <div class="balasan-text balasan-kosong">
+                                    Belum ada balasan.
+                                </div>
+                                `
+                            }
+
+
+                            <button
+                                type="button"
+                                class="admin-reply-btn"
+                                onclick="bukaModal(${index})"
+                            >
+                                ${aduan.balasan
+                                    ? "Ubah Balasan"
+                                    : "Balas Aduan"
+                                }
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                `;
+
+            }).join("");
+
+    }
+
+
+    /* =========================================
+       STATISTIK
+    ========================================= */
+
+    function updateStatistik(data){
+
+        let baru = 0;
+
+        let proses = 0;
+
+        let selesai = 0;
+
+
+        data.forEach(aduan=>{
+
+            const status =
+                String(
+                    aduan.status || "Baru"
+                ).toLowerCase();
+
+
+            if(status === "baru"){
+                baru++;
+            }
+
+            else if(
+                status === "diproses"
+            ){
+                proses++;
+            }
+
+            else if(
+                status === "selesai"
+            ){
+                selesai++;
+            }
+
+        });
+
+
+        document.getElementById(
+            "totalAduan"
+        ).textContent = data.length;
+
+
+        document.getElementById(
+            "totalBaru"
+        ).textContent = baru;
+
+
+        document.getElementById(
+            "totalProses"
+        ).textContent = proses;
+
+
+        document.getElementById(
+            "totalSelesai"
+        ).textContent = selesai;
+
+    }
+
+
+    /* =========================================
+       SEARCH
+    ========================================= */
+
+    function filterAduan(){
+
+        const keyword =
+            document.getElementById(
+                "searchAduan"
+            ).value
+            .toLowerCase()
+            .trim();
+
+
+        if(!keyword){
+
+            tampilkanAduan(
+                semuaAduan
+            );
+
+            return;
+
+        }
+
+
+        const hasil =
+            semuaAduan.filter(aduan=>{
+
+                return (
+
+                    String(
+                        aduan.nama || ""
+                    ).toLowerCase().includes(keyword)
+
+                    ||
+
+                    String(
+                        aduan.token || ""
+                    ).toLowerCase().includes(keyword)
+
+                    ||
+
+                    String(
+                        aduan.judul || ""
+                    ).toLowerCase().includes(keyword)
+
+                    ||
+
+                    String(
+                        aduan.kategori || ""
+                    ).toLowerCase().includes(keyword)
+
+                );
+
+            });
+
+
+        tampilkanAduan(hasil);
+
+    }
+
+
+    /* =========================================
+       MODAL
+    ========================================= */
+
+    function bukaModal(index){
+
+        aduanDipilih =
+            semuaAduan[index];
+
+
+        if(!aduanDipilih){
+
+            return;
+
+        }
+
+
+        document.getElementById(
+            "modalInfo"
+        ).textContent =
+            "Token: " +
+            (aduanDipilih.token || "-");
+
+
+        document.getElementById(
+            "modalStatus"
+        ).value =
+            aduanDipilih.status ||
+            "Baru";
+
+
+        document.getElementById(
+            "modalBalasan"
+        ).value =
+            aduanDipilih.balasan ||
+            "";
+
+
+        document.getElementById(
+            "modalBalasan"
+        ).focus();
+
+
+        document.getElementById(
+            "modalBalasan"
+        ).parentElement
+        .parentElement
+        .classList.add("show");
+
+    }
+
+
+    function tutupModal(){
+
+        document.getElementById(
+            "modalBalasan"
+        ).value = "";
+
+
+        document.getElementById(
+            "modalBalasan"
+        ).parentElement
+        .parentElement
+        .classList.remove("show");
+
+
+        aduanDipilih = null;
+
+    }
+
+
+    /* =========================================
+       SIMPAN BALASAN
+    ========================================= */
+
+    async function simpanBalasan(){
+
+        if(!aduanDipilih){
+
+            alert(
+                "Pengaduan belum dipilih."
+            );
+
+            return;
+
+        }
+
+
+        const status =
+            document.getElementById(
+                "modalStatus"
+            ).value;
+
+
+        const balasan =
+            document.getElementById(
+                "modalBalasan"
+            ).value.trim();
+
+
+        if(!balasan){
+
+            alert(
+                "Silakan isi balasan terlebih dahulu."
+            );
+
+            return;
+
+        }
+
+
+        const tombol =
+            document.querySelector(
+                ".modal .admin-btn:not(.secondary)"
+            );
+
+
+        tombol.disabled = true;
+
+        tombol.textContent =
+            "Menyimpan...";
+
+
+        try{
+
+            const data =
+                new URLSearchParams();
+
+
+            data.append(
+                "action",
+                "updateAduan"
+            );
+
+
+            data.append(
+                "token",
+                aduanDipilih.token || ""
+            );
+
+
+            data.append(
+                "status",
+                status
+            );
+
+
+            data.append(
+                "balasan",
+                balasan
+            );
+
+
+            await fetch(
+                SCRIPT_URL,
+                {
+                    method:"POST",
+                    body:data,
+                    mode:"no-cors"
+                }
+            );
+
+
+            /*
+             * Karena no-cors digunakan,
+             * browser tidak dapat membaca
+             * respons Apps Script.
+             *
+             * Kita perbarui tampilan lokal
+             * setelah request dikirim.
+             */
+
+            aduanDipilih.status =
+                status;
+
+
+            aduanDipilih.balasan =
+                balasan;
+
+
+            tampilkanAduan(
+                semuaAduan
+            );
+
+
+            updateStatistik(
+                semuaAduan
+            );
+
+
+            tutupModal();
+
+
+            alert(
+                "Balasan berhasil dikirim."
+            );
+
+
+        }catch(error){
+
+            console.error(error);
+
+            alert(
+                "Balasan gagal dikirim. Silakan coba lagi."
+            );
+
+        }
+
+
+        tombol.disabled = false;
+
+        tombol.textContent =
+            "Simpan Balasan";
+
+    }
+
+
+    /* =========================================
+       KEAMANAN TAMPILAN
+    ========================================= */
+
+    function escapeHTML(value){
+
+        return String(value)
+            .replace(/&/g,"&amp;")
+            .replace(/</g,"&lt;")
+            .replace(/>/g,"&gt;")
+            .replace(/"/g,"&quot;")
+            .replace(/'/g,"&#039;");
+
+    }
+
+
+    /* =========================================
+       KLIK LUAR MODAL
+    ========================================= */
+
+    document.getElementById(
+        "modalBalasan"
+    ).addEventListener(
+        "click",
+        function(e){
+
+            if(
+                e.target === this
+            ){
+
+                tutupModal();
+
+            }
+
+        }
+    );
+
+
+    /* =========================================
+       MULAI
+    ========================================= */
+
+    muatData();
+
+</script>
+
+</body>
+</html>
