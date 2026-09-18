@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login Admin — Semparuk Kuala</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body class="login-page">
+
+    <main class="login-container">
+
+        <div class="login-card">
+
+
+            <!-- =========================
+                 LOGO
+            ========================== -->
+
+            <div class="login-logo">
+
+                <div class="login-mark">
+                    SK
+                </div>
+
+                <div>
+                    <strong>WEBSITE DESA</strong>
+                    <span>Semparuk Kuala</span>
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 JUDUL
+            ========================== -->
+
+            <div class="login-heading">
+
+                <span class="login-eyebrow">
+                    AREA ADMIN
+                </span>
+
+                <h1>
+                    Selamat datang kembali
+                </h1>
+
+                <p>
+                    Silakan masuk untuk mengelola pengaduan
+                    masyarakat Semparuk Kuala.
+                </p>
+
+            </div>
+
+
+            <!-- =========================
+                 FORM LOGIN
+            ========================== -->
+
+            <form id="loginForm">
+
+
+                <!-- USERNAME -->
+
+                <div class="login-form-group">
+
+                    <label for="username">
+                        Username
+                    </label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Masukkan username"
+                        autocomplete="username"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="login-form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <div class="password-wrapper">
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Masukkan password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            id="togglePassword"
+                            class="show-password"
+                        >
+                            Lihat
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TOMBOL LOGIN -->
+
+                <button
+                    type="submit"
+                    class="login-button"
+                >
+
+                    Masuk ke Admin
+
+                    <span>→</span>
+
+                </button>
+
+
+                <!-- STATUS LOGIN -->
+
+                <p
+                    id="loginStatus"
+                    class="login-status"
+                ></p>
+
+
+            </form>
+
+
+            <!-- KEMBALI KE WEBSITE -->
+
+            <a
+                href="index.html"
+                class="back-home"
+            >
+                ← Kembali ke Website
+            </a>
+
+
+        </div>
+
+
+        <!-- FOOTER -->
+
+        <p class="login-footer">
+            © 2026 Semparuk Kuala
+        </p>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         SCRIPT LOGIN
+    ========================== -->
+
+    <script>
+
+        /* Ambil elemen */
+
+        const loginForm =
+            document.getElementById("loginForm");
+
+        const username =
+            document.getElementById("username");
+
+        const password =
+            document.getElementById("password");
+
+        const loginStatus =
+            document.getElementById("loginStatus");
+
+        const togglePassword =
+            document.getElementById("togglePassword");
+
+
+
+        /* =========================
+           LIHAT / SEMBUNYIKAN PASSWORD
+        ========================== */
+
+        togglePassword.addEventListener(
+            "click",
+            function () {
+
+                if (password.type === "password") {
+
+                    password.type = "text";
+
+                    togglePassword.textContent =
+                        "Sembunyikan";
+
+                } else {
+
+                    password.type = "password";
+
+                    togglePassword.textContent =
+                        "Lihat";
+
+                }
+
+            }
+        );
+
+
+
+        /* =========================
+           PROSES LOGIN
+        ========================== */
+
+        loginForm.addEventListener(
+            "submit",
+            function (e) {
+
+                e.preventDefault();
+
+
+                const user =
+                    username.value.trim();
+
+                const pass =
+                    password.value.trim();
+
+
+
+                /* Validasi */
+
+                if (!user || !pass) {
+
+                    loginStatus.textContent =
+                        "Username dan password wajib diisi.";
+
+                    loginStatus.className =
+                        "login-status error";
+
+                    return;
+
+                }
+
+
+
+                /* =========================
+                   USERNAME & PASSWORD ADMIN
+                ========================== */
+
+                if (
+                    user === "ADMIN" &&
+                    pass === "saira"
+                ) {
+
+
+                    loginStatus.textContent =
+                        "Login berhasil. Membuka halaman admin...";
+
+                    loginStatus.className =
+                        "login-status success";
+
+
+
+                    /* Masuk ke halaman admin */
+
+                    setTimeout(
+                        function () {
+
+                            window.location.href =
+                                "admin.html";
+
+                        },
+                        700
+                    );
+
+
+                } else {
+
+
+                    /* Login gagal */
+
+                    loginStatus.textContent =
+                        "Username atau password salah.";
+
+                    loginStatus.className =
+                        "login-status error";
+
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>
