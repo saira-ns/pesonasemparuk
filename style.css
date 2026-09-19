@@ -36,10 +36,13 @@ a{
   color:inherit;
 }
 
+/* =====================================================
+   IMAGE DEFAULT
+===================================================== */
+
 img{
   display:block;
-  width:100%;
-  object-fit:cover;
+  max-width:100%;
 }
 
 .container{
@@ -74,7 +77,9 @@ nav,
 }
 
 
-/* BRAND / LOGO PEMDA */
+/* =====================================================
+   BRAND / LOGO
+===================================================== */
 
 .brand{
   display:flex;
@@ -84,14 +89,49 @@ nav,
   color:var(--green);
 }
 
+
+/*
+   KHUSUS LOGO PEMDA DI NAVBAR
+
+   Jangan menggunakan .brand-mark secara global
+   karena admin.html juga memakai class tersebut
+   untuk kotak "SK".
+*/
+
+nav .brand img.brand-mark{
+  width:42px !important;
+  height:42px !important;
+  min-width:42px !important;
+  min-height:42px !important;
+  max-width:42px !important;
+  max-height:42px !important;
+
+  display:block;
+  flex:0 0 42px;
+
+  object-fit:contain;
+  object-position:center;
+
+  border-radius:0;
+
+  margin:0;
+  padding:0;
+}
+
+
+/* Logo apabila suatu halaman menggunakan class brand-logo */
+
 .brand-logo{
   width:44px;
   height:44px;
   min-width:44px;
+  max-width:44px;
   object-fit:contain;
   display:block;
+  flex:0 0 44px;
   border-radius:10px;
 }
+
 
 .brand-text{
   display:flex;
@@ -107,7 +147,9 @@ nav,
 }
 
 
-/* NAVIGATION */
+/* =====================================================
+   NAVIGATION
+===================================================== */
 
 .nav-links,
 .nav-menu{
@@ -449,7 +491,9 @@ h3{
 }
 
 .gallery img{
+  width:100%;
   height:100%;
+  object-fit:cover;
   transition:.3s;
 }
 
@@ -857,7 +901,9 @@ footer p,
 }
 
 
-/* LOGIN LOGO */
+/* =====================================================
+   LOGIN LOGO
+===================================================== */
 
 .login-logo{
   display:flex;
@@ -898,7 +944,9 @@ footer p,
 }
 
 
-/* LOGIN HEADING */
+/* =====================================================
+   LOGIN HEADING
+===================================================== */
 
 .login-heading{
   margin-bottom:28px;
@@ -927,7 +975,9 @@ footer p,
 }
 
 
-/* LOGIN FORM */
+/* =====================================================
+   LOGIN FORM
+===================================================== */
 
 .login-form-group{
   margin-bottom:20px;
@@ -965,7 +1015,9 @@ footer p,
 }
 
 
-/* PASSWORD */
+/* =====================================================
+   PASSWORD
+===================================================== */
 
 .password-wrapper{
   position:relative;
@@ -997,7 +1049,9 @@ footer p,
 }
 
 
-/* LOGIN BUTTON */
+/* =====================================================
+   LOGIN BUTTON
+===================================================== */
 
 .login-button{
   width:100%;
@@ -1029,7 +1083,9 @@ footer p,
 }
 
 
-/* STATUS LOGIN */
+/* =====================================================
+   STATUS LOGIN
+===================================================== */
 
 .login-status{
   min-height:21px;
@@ -1049,7 +1105,9 @@ footer p,
 }
 
 
-/* KEMBALI */
+/* =====================================================
+   KEMBALI
+===================================================== */
 
 .back-home{
   display:block;
@@ -1166,12 +1224,19 @@ footer p,
   }
 
 
-  /* LOGO MOBILE */
+  /* =================================================
+     LOGO NAVBAR MOBILE
+  ================================================= */
 
-  .brand-logo{
-    width:41px;
-    height:41px;
-    min-width:41px;
+  nav .brand img.brand-mark{
+    width:38px !important;
+    height:38px !important;
+    min-width:38px !important;
+    min-height:38px !important;
+    max-width:38px !important;
+    max-height:38px !important;
+    flex-basis:38px;
+    object-fit:contain;
   }
 
   .brand-text strong{
@@ -1179,7 +1244,9 @@ footer p,
   }
 
 
-  /* HERO */
+  /* =================================================
+     HERO
+  ================================================= */
 
   .hero{
     min-height:570px;
@@ -1278,7 +1345,9 @@ footer p,
   }
 
 
-  /* LOGIN MOBILE */
+  /* =================================================
+     LOGIN MOBILE
+  ================================================= */
 
   .login-page{
     padding:20px 15px;
@@ -1314,22 +1383,50 @@ footer p,
   }
 }
 
-/* FIX LOGO NAVBAR */
 
-nav .brand{
-    display:flex;
-    align-items:center;
-    gap:12px;
+/* =====================================================
+   FINAL LOGO SAFETY FIX
+===================================================== */
+
+/*
+   Aturan ini sengaja dibuat sangat spesifik.
+   Hanya gambar logo yang berada di dalam .brand
+   pada navbar yang terkena aturan ini.
+
+   Jadi .brand-mark milik admin.html yang berupa
+   kotak "SK" TIDAK ikut berubah.
+*/
+
+nav .brand > img.brand-mark{
+  width:42px !important;
+  height:42px !important;
+  min-width:42px !important;
+  min-height:42px !important;
+  max-width:42px !important;
+  max-height:42px !important;
+
+  object-fit:contain !important;
+  object-position:center !important;
+
+  display:block !important;
+  flex-shrink:0 !important;
+
+  margin:0 !important;
+  padding:0 !important;
 }
 
-nav .brand-mark{
-    width:42px !important;
-    height:42px !important;
-    max-width:42px !important;
-    max-height:42px !important;
-    min-width:42px !important;
-    min-height:42px !important;
-    object-fit:contain;
-    display:block;
-    flex-shrink:0;
+
+/* Mobile final protection */
+
+@media(max-width:520px){
+
+  nav .brand > img.brand-mark{
+    width:38px !important;
+    height:38px !important;
+    min-width:38px !important;
+    min-height:38px !important;
+    max-width:38px !important;
+    max-height:38px !important;
+  }
+
 }
