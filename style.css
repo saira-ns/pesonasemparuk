@@ -1313,3 +1313,23 @@ footer p,
     min-height:50px;
   }
 }
+
+/* FIX LOGO NAVBAR */
+
+nav .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+nav .brand-mark{
+    width:42px !important;
+    height:42px !important;
+    max-width:42px !important;
+    max-height:42px !important;
+    min-width:42px !important;
+    min-height:42px !important;
+    object-fit:contain;
+    display:block;
+    flex-shrink:0;
+}
