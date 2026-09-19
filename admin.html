@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Admin — Semparuk Kuala</title>
+<title>Admin — Desa Semparuk</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,10 +14,6 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
-
-/* =====================================================
-   ROOT
-===================================================== */
 
 :root{
     --green:#174b3a;
@@ -59,6 +55,7 @@ textarea{
     font-family:inherit;
 }
 
+
 /* =====================================================
    NAVBAR
 ===================================================== */
@@ -66,7 +63,6 @@ textarea{
 .navbar{
     background:#fff;
     border-bottom:1px solid rgba(23,75,58,.08);
-
     position:sticky;
     top:0;
     z-index:50;
@@ -75,7 +71,6 @@ textarea{
 .nav-container{
     width:min(1180px,92%);
     margin:auto;
-
     min-height:78px;
 
     display:flex;
@@ -91,42 +86,27 @@ textarea{
     gap:12px;
 }
 
-.brand-mark{
-    width:42px;
-    height:42px;
+.brand-logo{
+    width:44px;
+    height:44px;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    object-fit:contain;
 
-    background:var(--green);
-    color:#fff;
-
-    border-radius:13px;
-
-    font-weight:700;
-    font-size:13px;
-
-    box-shadow:0 7px 18px rgba(23,75,58,.18);
+    display:block;
 }
 
 .brand-text strong{
     display:block;
-
     color:#69766f;
-
     font-size:9px;
     letter-spacing:1.2px;
 }
 
 .brand-text small{
     display:block;
-
     margin-top:2px;
-
     color:var(--green);
-
-    font-size:14px;
+    font-size:15px;
     font-weight:700;
 }
 
@@ -138,14 +118,10 @@ textarea{
 
 .nav-menu a{
     color:#596760;
-
     font-size:12px;
     font-weight:600;
-
     padding:10px 13px;
-
     border-radius:10px;
-
     transition:.2s ease;
 }
 
@@ -158,6 +134,7 @@ textarea{
     background:var(--mint);
     color:var(--green);
 }
+
 
 /* =====================================================
    LOGIN
@@ -279,7 +256,6 @@ textarea{
 
 .login-btn:hover{
     background:var(--green2);
-
     transform:translateY(-1px);
 }
 
@@ -294,6 +270,7 @@ textarea{
 
     font-size:12px;
 }
+
 
 /* =====================================================
    HEADER
@@ -314,12 +291,15 @@ textarea{
 
 .eyebrow{
     display:inline-flex;
+
     align-items:center;
+
     gap:10px;
 
     color:#b09a5c;
 
     font-size:11px;
+
     font-weight:700;
 
     letter-spacing:1.5px;
@@ -368,6 +348,7 @@ textarea{
     margin-top:28px;
 }
 
+
 /* =====================================================
    BUTTON
 ===================================================== */
@@ -401,7 +382,6 @@ textarea{
 
 .admin-btn:hover{
     background:var(--green2);
-
     transform:translateY(-1px);
 }
 
@@ -425,6 +405,7 @@ textarea{
     transform:none;
 }
 
+
 /* =====================================================
    MAIN
 ===================================================== */
@@ -432,6 +413,7 @@ textarea{
 .section{
     padding:55px 0 75px;
 }
+
 
 /* =====================================================
    STATISTICS
@@ -480,6 +462,7 @@ textarea{
 
     font-size:32px;
 }
+
 
 /* =====================================================
    PANEL
@@ -533,13 +516,13 @@ textarea{
     font-size:12px;
 }
 
+
 /* =====================================================
    SEARCH
 ===================================================== */
 
 .admin-search{
     width:300px;
-
     max-width:100%;
 }
 
@@ -569,21 +552,19 @@ textarea{
     box-shadow:0 0 0 3px rgba(36,102,78,.08);
 }
 
+
 /* =====================================================
    TABLE
 ===================================================== */
 
 .table-wrapper{
     width:100%;
-
     overflow-x:auto;
 }
 
 .aduan-table{
     width:100%;
-
     min-width:1250px;
-
     border-collapse:collapse;
 }
 
@@ -625,21 +606,17 @@ textarea{
 
 .nama-cell strong{
     display:block;
-
     color:var(--green);
-
     font-weight:700;
 }
 
 .judul-cell{
     color:var(--dark)!important;
-
     font-weight:700;
 }
 
 .isi-cell{
     max-width:270px;
-
     white-space:normal;
 }
 
@@ -661,6 +638,7 @@ textarea{
     white-space:nowrap;
 }
 
+
 /* =====================================================
    STATUS
 ===================================================== */
@@ -681,21 +659,19 @@ textarea{
 
 .status-baru{
     background:#fff4d9;
-
     color:#916b20;
 }
 
 .status-diproses{
     background:#e7f0ff;
-
     color:#3d6190;
 }
 
 .status-selesai{
     background:#e4f4eb;
-
     color:#287052;
 }
+
 
 /* =====================================================
    BALASAN
@@ -703,7 +679,6 @@ textarea{
 
 .balasan-cell{
     min-width:220px;
-
     max-width:280px;
 }
 
@@ -717,7 +692,6 @@ textarea{
 
 .balasan-kosong{
     color:#a0aaa5;
-
     font-style:italic;
 }
 
@@ -747,6 +721,7 @@ textarea{
     background:var(--green2);
 }
 
+
 /* =====================================================
    MESSAGE
 ===================================================== */
@@ -768,6 +743,7 @@ textarea{
 
     margin-bottom:5px;
 }
+
 
 /* =====================================================
    FOOTER
@@ -797,7 +773,6 @@ textarea{
 
 .footer strong{
     color:#fff;
-
     font-size:14px;
 }
 
@@ -808,6 +783,7 @@ textarea{
 
     color:#b9cbc2;
 }
+
 
 /* =====================================================
    MODAL
@@ -853,13 +829,11 @@ textarea{
 
     from{
         opacity:0;
-
         transform:translateY(10px);
     }
 
     to{
         opacity:1;
-
         transform:translateY(0);
     }
 
@@ -922,7 +896,6 @@ textarea{
 
 .modal-box textarea{
     min-height:130px;
-
     resize:vertical;
 }
 
@@ -943,6 +916,7 @@ textarea{
     flex-wrap:wrap;
 }
 
+
 /* =====================================================
    MOBILE
 ===================================================== */
@@ -955,15 +929,12 @@ textarea{
 
     .nav-menu{
         overflow-x:auto;
-
         max-width:55%;
     }
 
     .nav-menu a{
         white-space:nowrap;
-
         padding:8px 9px;
-
         font-size:10px;
     }
 
@@ -973,7 +944,6 @@ textarea{
 
     .admin-panel-header{
         align-items:stretch;
-
         flex-direction:column;
     }
 
@@ -1023,18 +993,25 @@ textarea{
 
     .footer-content{
         flex-direction:column;
-
         align-items:flex-start;
     }
 
     .modal-box{
         padding:24px 20px;
-
         border-radius:20px;
     }
 
     .login-box{
         padding:28px 22px;
+    }
+
+    .brand-logo{
+        width:38px;
+        height:38px;
+    }
+
+    .brand-text small{
+        font-size:13px;
     }
 
 }
@@ -1056,9 +1033,11 @@ textarea{
 
 <a href="index.html" class="brand">
 
-<span class="brand-mark">
-SK
-</span>
+<img
+    src="logo_pemda.png"
+    alt="Logo Pemerintah Daerah"
+    class="brand-logo"
+>
 
 <span class="brand-text">
 
@@ -1067,7 +1046,7 @@ WEBSITE DESA
 </strong>
 
 <small>
-Semparuk Kuala
+Desa Semparuk
 </small>
 
 </span>
@@ -1094,7 +1073,7 @@ Galeri
 </a>
 
 <a href="kontak.html">
-Aduan
+Kontak/Aduan
 </a>
 
 <a href="admin.html" class="active">
@@ -1205,10 +1184,6 @@ Masuk ke Dashboard
 >
 
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
-
 <header class="admin-header">
 
 <div class="container">
@@ -1251,10 +1226,6 @@ kepada masyarakat.
 </header>
 
 
-<!-- =====================================================
-     CONTENT
-===================================================== -->
-
 <main>
 
 <section class="section">
@@ -1262,12 +1233,9 @@ kepada masyarakat.
 <div class="container">
 
 
-<!-- =====================================================
-     STATISTIK
-===================================================== -->
+<!-- STATISTIK -->
 
 <div class="admin-stats">
-
 
 <div class="admin-stat">
 
@@ -1320,19 +1288,14 @@ Selesai
 
 </div>
 
-
 </div>
 
 
-<!-- =====================================================
-     PANEL
-===================================================== -->
+<!-- PANEL -->
 
 <div class="admin-panel">
 
-
 <div class="admin-panel-header">
-
 
 <div class="admin-panel-title">
 
@@ -1362,15 +1325,12 @@ Data pengaduan yang tersimpan di Google Sheets.
 
 </div>
 
-
 </div>
 
 
 <div class="table-wrapper">
 
-
 <table class="aduan-table">
-
 
 <thead>
 
@@ -1415,7 +1375,6 @@ Masuk sebagai administrator untuk melihat data.
 
 </table>
 
-
 </div>
 
 </div>
@@ -1440,7 +1399,7 @@ Masuk sebagai administrator untuk melihat data.
 <div>
 
 <strong>
-Semparuk Kuala
+Desa Semparuk
 </strong>
 
 <p>
@@ -1450,7 +1409,7 @@ Panel Administrator Website Desa
 </div>
 
 <p>
-© 2026 Semparuk Kuala
+© 2026 Desa Semparuk
 </p>
 
 </div>
@@ -1467,14 +1426,11 @@ Panel Administrator Website Desa
     id="modalBalasan"
 >
 
-
 <div class="modal-box">
-
 
 <h2>
 Balas Pengaduan
 </h2>
-
 
 <p
     class="modal-info"
@@ -1487,7 +1443,6 @@ Token pengaduan
 <label for="modalStatus">
 Status Pengaduan
 </label>
-
 
 <select id="modalStatus">
 
@@ -1510,7 +1465,6 @@ Selesai
 Balasan Admin
 </label>
 
-
 <textarea
     id="modalBalasanText"
     placeholder="Tulis balasan untuk masyarakat..."
@@ -1518,7 +1472,6 @@ Balasan Admin
 
 
 <div class="modal-actions">
-
 
 <button
     type="button"
@@ -1528,7 +1481,6 @@ Balasan Admin
 Batal
 </button>
 
-
 <button
     type="button"
     class="admin-btn"
@@ -1537,7 +1489,6 @@ Batal
 >
 Simpan Balasan
 </button>
-
 
 </div>
 
@@ -1600,7 +1551,6 @@ loginForm.addEventListener(
 
         e.preventDefault();
 
-
         const username =
             document.getElementById(
                 "loginUsername"
@@ -1608,13 +1558,11 @@ loginForm.addEventListener(
             .value
             .trim();
 
-
         const password =
             document.getElementById(
                 "loginPassword"
             )
             .value;
-
 
         if(
             username === ADMIN_USERNAME &&
@@ -1626,17 +1574,13 @@ loginForm.addEventListener(
                 "true"
             );
 
-
             loginMessage.textContent = "";
-
 
             loginScreen.style.display =
                 "none";
 
-
             dashboardContent.style.display =
                 "block";
-
 
             muatData();
 
@@ -1667,7 +1611,6 @@ function cekSession(){
         sessionStorage.getItem(
             "adminLogin"
         );
-
 
     if(login === "true"){
 
@@ -1704,30 +1647,23 @@ function keluarAdmin(){
         "adminLogin"
     );
 
-
     dashboardContent.style.display =
         "none";
 
-
     loginScreen.style.display =
         "flex";
-
 
     document.getElementById(
         "loginUsername"
     ).value = "";
 
-
     document.getElementById(
         "loginPassword"
     ).value = "";
 
-
     loginMessage.textContent = "";
 
-
     tutupModal();
-
 
     window.scrollTo(
         0,
@@ -1751,12 +1687,10 @@ function normalisasiAduan(item){
             item.NO ??
             "",
 
-
         tanggal:
             item.tanggal ??
             item.TANGGAL ??
             "",
-
 
         token:
             item.token ??
@@ -1764,24 +1698,20 @@ function normalisasiAduan(item){
             item.TOKEN ??
             "",
 
-
         nama:
             item.nama ??
             item.NAMA ??
             "",
-
 
         email:
             item.email ??
             item.EMAIL ??
             "",
 
-
         kategori:
             item.kategori ??
             item.KATEGORI ??
             "",
-
 
         judul:
             item.judul ??
@@ -1790,7 +1720,6 @@ function normalisasiAduan(item){
             item["JUDUL ADUAN"] ??
             "",
 
-
         isi:
             item.isi ??
             item.isiAduan ??
@@ -1798,12 +1727,10 @@ function normalisasiAduan(item){
             item["ISI ADUAN"] ??
             "",
 
-
         status:
             item.status ??
             item.STATUS ??
             "Baru",
-
 
         balasan:
             item.balasan ??
@@ -1831,12 +1758,10 @@ async function muatData(){
 
     }
 
-
     const tabel =
         document.getElementById(
             "tabelAduan"
         );
-
 
     tabel.innerHTML = `
 
@@ -1859,7 +1784,6 @@ async function muatData(){
 
     `;
 
-
     try{
 
         const url =
@@ -1874,10 +1798,8 @@ async function muatData(){
                 ADMIN_PASSWORD
             );
 
-
         const response =
             await fetch(url);
-
 
         if(!response.ok){
 
@@ -1888,10 +1810,8 @@ async function muatData(){
 
         }
 
-
         const data =
             await response.json();
-
 
         if(
             !data ||
@@ -1905,28 +1825,23 @@ async function muatData(){
 
         }
 
-
         const rawData =
             Array.isArray(data.data)
             ? data.data
             : [];
-
 
         semuaAduan =
             rawData.map(
                 normalisasiAduan
             );
 
-
         tampilkanAduan(
             semuaAduan
         );
 
-
         updateStatistik(
             semuaAduan
         );
-
 
     }
 
@@ -1936,7 +1851,6 @@ async function muatData(){
             "Gagal mengambil data:",
             error
         );
-
 
         tabel.innerHTML = `
 
@@ -1988,7 +1902,6 @@ function tampilkanAduan(data){
             "tabelAduan"
         );
 
-
     if(!data.length){
 
         tabel.innerHTML = `
@@ -2016,7 +1929,6 @@ function tampilkanAduan(data){
 
     }
 
-
     tabel.innerHTML =
         data.map(
             (aduan)=>{
@@ -2024,7 +1936,6 @@ function tampilkanAduan(data){
                 const status =
                     aduan.status ||
                     "Baru";
-
 
                 const statusClass =
                     String(status)
@@ -2034,12 +1945,10 @@ function tampilkanAduan(data){
                         "-"
                     );
 
-
                 const originalIndex =
                     semuaAduan.indexOf(
                         aduan
                     );
-
 
                 return `
 
@@ -2051,13 +1960,11 @@ function tampilkanAduan(data){
                         )}
                     </td>
 
-
                     <td>
                         ${escapeHTML(
                             aduan.tanggal || "-"
                         )}
                     </td>
-
 
                     <td>
 
@@ -2071,7 +1978,6 @@ function tampilkanAduan(data){
 
                     </td>
 
-
                     <td class="nama-cell">
 
                         <strong>
@@ -2084,7 +1990,6 @@ function tampilkanAduan(data){
 
                     </td>
 
-
                     <td>
 
                         ${escapeHTML(
@@ -2092,7 +1997,6 @@ function tampilkanAduan(data){
                         )}
 
                     </td>
-
 
                     <td>
 
@@ -2102,7 +2006,6 @@ function tampilkanAduan(data){
 
                     </td>
 
-
                     <td class="judul-cell">
 
                         ${escapeHTML(
@@ -2111,7 +2014,6 @@ function tampilkanAduan(data){
 
                     </td>
 
-
                     <td class="isi-cell">
 
                         ${escapeHTML(
@@ -2119,7 +2021,6 @@ function tampilkanAduan(data){
                         )}
 
                     </td>
-
 
                     <td>
 
@@ -2136,7 +2037,6 @@ function tampilkanAduan(data){
                         </span>
 
                     </td>
-
 
                     <td class="balasan-cell">
 
@@ -2172,7 +2072,6 @@ function tampilkanAduan(data){
                             `
                         }
 
-
                         <button
                             type="button"
                             class="admin-reply-btn"
@@ -2186,7 +2085,6 @@ function tampilkanAduan(data){
                             }
 
                         </button>
-
 
                     </td>
 
@@ -2208,11 +2106,8 @@ function tampilkanAduan(data){
 function updateStatistik(data){
 
     let baru = 0;
-
     let proses = 0;
-
     let selesai = 0;
-
 
     data.forEach(
         aduan=>{
@@ -2224,7 +2119,6 @@ function updateStatistik(data){
                 )
                 .toLowerCase()
                 .trim();
-
 
             if(
                 status === "baru"
@@ -2253,24 +2147,20 @@ function updateStatistik(data){
         }
     );
 
-
     document.getElementById(
         "totalAduan"
     ).textContent =
         data.length;
-
 
     document.getElementById(
         "totalBaru"
     ).textContent =
         baru;
 
-
     document.getElementById(
         "totalProses"
     ).textContent =
         proses;
-
 
     document.getElementById(
         "totalSelesai"
@@ -2294,7 +2184,6 @@ function filterAduan(){
         .toLowerCase()
         .trim();
 
-
     if(!keyword){
 
         tampilkanAduan(
@@ -2305,7 +2194,6 @@ function filterAduan(){
 
     }
 
-
     const hasil =
         semuaAduan.filter(
             aduan=>{
@@ -2313,19 +2201,12 @@ function filterAduan(){
                 return [
 
                     aduan.nama,
-
                     aduan.email,
-
                     aduan.token,
-
                     aduan.kategori,
-
                     aduan.judul,
-
                     aduan.isi,
-
                     aduan.status,
-
                     aduan.balasan
 
                 ]
@@ -2344,7 +2225,6 @@ function filterAduan(){
             }
         );
 
-
     tampilkanAduan(
         hasil
     );
@@ -2361,13 +2241,9 @@ function bukaModal(index){
     aduanDipilih =
         semuaAduan[index];
 
-
     if(!aduanDipilih){
-
         return;
-
     }
-
 
     document.getElementById(
         "modalInfo"
@@ -2378,7 +2254,6 @@ function bukaModal(index){
             aduanDipilih.token ||
             "-"
         );
-
 
     document.getElementById(
         "modalStatus"
@@ -2393,14 +2268,12 @@ function bukaModal(index){
             "Baru"
         );
 
-
     document.getElementById(
         "modalBalasanText"
     )
     .value =
         aduanDipilih.balasan ||
         "";
-
 
     document.getElementById(
         "modalBalasan"
@@ -2423,7 +2296,6 @@ function tutupModal(){
             "modalBalasan"
         );
 
-
     if(modal){
 
         modal.classList.remove(
@@ -2432,11 +2304,9 @@ function tutupModal(){
 
     }
 
-
     document.getElementById(
         "modalBalasanText"
     ).value = "";
-
 
     aduanDipilih =
         null;
@@ -2460,13 +2330,11 @@ async function simpanBalasan(){
 
     }
 
-
     const status =
         document.getElementById(
             "modalStatus"
         )
         .value;
-
 
     const balasan =
         document.getElementById(
@@ -2474,7 +2342,6 @@ async function simpanBalasan(){
         )
         .value
         .trim();
-
 
     if(!balasan){
 
@@ -2486,42 +2353,35 @@ async function simpanBalasan(){
 
     }
 
-
     const tombol =
         document.getElementById(
             "btnSimpan"
         );
-
 
     tombol.disabled = true;
 
     tombol.textContent =
         "Menyimpan...";
 
-
     try{
 
         const data =
             new URLSearchParams();
-
 
         data.append(
             "action",
             "reply"
         );
 
-
         data.append(
             "username",
             ADMIN_USERNAME
         );
 
-
         data.append(
             "password",
             ADMIN_PASSWORD
         );
-
 
         data.append(
             "token",
@@ -2529,18 +2389,15 @@ async function simpanBalasan(){
             ""
         );
 
-
         data.append(
             "reply",
             balasan
         );
 
-
         data.append(
             "status",
             status
         );
-
 
         const response =
             await fetch(
@@ -2551,10 +2408,8 @@ async function simpanBalasan(){
                 }
             );
 
-
         const result =
             await response.json();
-
 
         if(
             !result ||
@@ -2568,32 +2423,25 @@ async function simpanBalasan(){
 
         }
 
-
         aduanDipilih.status =
             status;
 
-
         aduanDipilih.balasan =
             balasan;
-
 
         tampilkanAduan(
             semuaAduan
         );
 
-
         updateStatistik(
             semuaAduan
         );
 
-
         tutupModal();
-
 
         alert(
             "Balasan berhasil disimpan."
         );
-
 
     }
 
@@ -2604,7 +2452,6 @@ async function simpanBalasan(){
             error
         );
 
-
         alert(
             "Balasan gagal disimpan.\n\n" +
             (
@@ -2614,7 +2461,6 @@ async function simpanBalasan(){
         );
 
     }
-
 
     tombol.disabled = false;
 
@@ -2638,7 +2484,6 @@ function escapeHTML(value){
         return "";
 
     }
-
 
     return String(value)
 
